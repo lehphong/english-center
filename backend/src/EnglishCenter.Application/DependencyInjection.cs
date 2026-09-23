@@ -2,6 +2,7 @@ using EnglishCenter.Application.Features.Attendance;
 using EnglishCenter.Application.Features.Auth;
 using EnglishCenter.Application.Features.Classes;
 using EnglishCenter.Application.Features.Courses;
+using EnglishCenter.Application.Features.Dashboard;
 using EnglishCenter.Application.Features.Enrollments;
 using EnglishCenter.Application.Features.Grades;
 using EnglishCenter.Application.Features.Portal;
@@ -29,6 +30,7 @@ public static class DependencyInjection
         services.AddScoped<IAttendanceService, AttendanceService>();
         services.AddScoped<IGradeService, GradeService>();
         services.AddScoped<IPortalService, PortalService>();
+        services.AddScoped<IDashboardService, DashboardService>();
 
         return services;
     }
