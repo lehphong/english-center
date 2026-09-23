@@ -1,0 +1,16 @@
+# .NET
+**/bin/
+**/obj/
+*.user
+.vs/
+backend/src/EnglishCenter.Api/wwwroot/uploads/
+TestResults/
+
+# IDE / OS
+.idea/
+.vscode/*
+!.vscode/extensions.json
+.DS_Store
+
+# Env
+.env
