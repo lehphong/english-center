@@ -1,6 +1,7 @@
 using EnglishCenter.Application.Features.Auth;
 using EnglishCenter.Application.Features.Classes;
 using EnglishCenter.Application.Features.Courses;
+using EnglishCenter.Application.Features.Enrollments;
 using EnglishCenter.Application.Features.Students;
 using EnglishCenter.Application.Features.Users;
 using FluentValidation;
@@ -21,6 +22,7 @@ public static class DependencyInjection
         services.AddScoped<IClassService, ClassService>();
         services.AddScoped<IStudentService, StudentService>();
         services.AddScoped<IUserService, UserService>();
+        services.AddScoped<IEnrollmentService, EnrollmentService>();
 
         return services;
     }
