@@ -1,3 +1,4 @@
+using EnglishCenter.Application.Features.Auth;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -10,6 +11,8 @@ public static class DependencyInjection
     {
         services.AddValidatorsFromAssembly(typeof(DependencyInjection).Assembly, includeInternalTypes: true);
         services.TryAddSingleton(TimeProvider.System);
+
+        services.AddScoped<IAuthService, AuthService>();
 
         return services;
     }
