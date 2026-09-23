@@ -1,0 +1,334 @@
+{
+  "app": {
+    "name": "Trung tâm Anh ngữ",
+    "tagline": "Hệ thống quản lý đào tạo"
+  },
+  "nav": {
+    "dashboard": "Tổng quan",
+    "courses": "Khóa học",
+    "classes": "Lớp học",
+    "students": "Học viên",
+    "enrollments": "Ghi danh",
+    "attendance": "Điểm danh",
+    "attendanceHistory": "Lịch sử điểm danh",
+    "grades": "Nhập điểm",
+    "gradeHistory": "Sổ điểm",
+    "users": "Tài khoản",
+    "training": "Đào tạo",
+    "system": "Hệ thống",
+    "myClasses": "Lớp của tôi",
+    "myAttendance": "Chuyên cần",
+    "myGrades": "Kết quả học tập",
+    "myProfile": "Hồ sơ"
+  },
+  "common": {
+    "search": "Tìm kiếm",
+    "searchPlaceholder": "Nhập từ khóa...",
+    "add": "Thêm mới",
+    "edit": "Sửa",
+    "delete": "Xóa",
+    "save": "Lưu",
+    "cancel": "Hủy",
+    "actions": "Thao tác",
+    "reset": "Đặt lại",
+    "confirmDelete": "Bạn chắc chắn muốn xóa \"{name}\"?",
+    "saved": "Đã lưu thành công",
+    "deleted": "Đã xóa",
+    "all": "Tất cả",
+    "yes": "Có",
+    "no": "Không",
+    "noData": "Không có dữ liệu",
+    "back": "Quay lại",
+    "details": "Chi tiết",
+    "upload": "Tải ảnh lên",
+    "logout": "Đăng xuất",
+    "changePassword": "Đổi mật khẩu",
+    "language": "Ngôn ngữ",
+    "load": "Tải dữ liệu",
+    "active": "Đang hoạt động",
+    "inactive": "Ngừng hoạt động",
+    "locked": "Đã khóa",
+    "select": "Chọn...",
+    "notFound": "Không tìm thấy trang",
+    "forbidden": "Bạn không có quyền truy cập trang này",
+    "goHome": "Về trang chủ",
+    "resetPassword": "Đặt lại mật khẩu",
+    "uploadHint": "JPG, PNG hoặc WEBP, tối đa 2MB"
+  },
+  "auth": {
+    "title": "Đăng nhập",
+    "subtitle": "Đăng nhập để tiếp tục",
+    "submit": "Đăng nhập",
+    "currentPassword": "Mật khẩu hiện tại",
+    "newPassword": "Mật khẩu mới",
+    "confirmPassword": "Nhập lại mật khẩu mới",
+    "passwordChanged": "Đã đổi mật khẩu",
+    "passwordMismatch": "Mật khẩu nhập lại không khớp"
+  },
+  "fields": {
+    "name": "Tên",
+    "description": "Mô tả",
+    "tuitionFee": "Học phí",
+    "totalSessions": "Tổng số buổi",
+    "gradingScheme": "Thang điểm",
+    "isActive": "Trạng thái",
+    "thumbnail": "Ảnh bìa",
+    "code": "Mã",
+    "course": "Khóa học",
+    "courseId": "Khóa học",
+    "teacherName": "Giáo viên",
+    "schedule": "Lịch học",
+    "room": "Phòng",
+    "startDate": "Ngày khai giảng",
+    "endDate": "Ngày kết thúc",
+    "maxCapacity": "Sĩ số tối đa",
+    "enrolled": "Sĩ số",
+    "fullName": "Họ và tên",
+    "dateOfBirth": "Ngày sinh",
+    "gender": "Giới tính",
+    "email": "Email",
+    "phoneNumber": "Số điện thoại",
+    "address": "Địa chỉ",
+    "entryLevel": "Trình độ đầu vào",
+    "account": "Tài khoản",
+    "username": "Tên đăng nhập",
+    "password": "Mật khẩu",
+    "newPassword": "Mật khẩu mới",
+    "currentPassword": "Mật khẩu hiện tại",
+    "createAccount": "Cấp tài khoản đăng nhập",
+    "student": "Học viên",
+    "studentId": "Học viên",
+    "class": "Lớp",
+    "classId": "Lớp",
+    "enrolledOn": "Ngày ghi danh",
+    "amountPaid": "Đã đóng",
+    "balance": "Còn nợ",
+    "paymentStatus": "Tình trạng học phí",
+    "learningStatus": "Tình trạng học",
+    "sessionNumber": "Buổi",
+    "sessionDate": "Ngày học",
+    "isPresent": "Có mặt",
+    "note": "Ghi chú",
+    "examType": "Kỳ kiểm tra",
+    "listening": "Nghe",
+    "reading": "Đọc",
+    "writing": "Viết",
+    "speaking": "Nói",
+    "overall": "Tổng",
+    "feedback": "Nhận xét",
+    "role": "Vai trò",
+    "lastLoginAt": "Đăng nhập gần nhất",
+    "attendanceRate": "Chuyên cần",
+    "classCount": "Số lớp",
+    "students": "Học viên",
+    "entries": "Danh sách",
+    "file": "Tệp",
+    "avatar": "Ảnh đại diện"
+  },
+  "dashboard": {
+    "activeCourses": "Khóa học đang mở",
+    "openClasses": "Lớp đang học",
+    "students": "Học viên",
+    "activeEnrollments": "Lượt ghi danh",
+    "collected": "Học phí đã thu",
+    "outstanding": "Học phí còn nợ",
+    "occupancy": "Sĩ số các lớp đang học"
+  },
+  "courses": {
+    "title": "Quản lý khóa học",
+    "create": "Thêm khóa học",
+    "edit": "Sửa khóa học"
+  },
+  "classes": {
+    "title": "Quản lý lớp học",
+    "create": "Mở lớp mới",
+    "edit": "Sửa lớp học",
+    "studentList": "Danh sách học viên"
+  },
+  "students": {
+    "title": "Quản lý học viên",
+    "create": "Thêm học viên",
+    "edit": "Sửa học viên",
+    "enrollments": "Các lớp đã ghi danh",
+    "hasAccount": "Đã có tài khoản",
+    "noAccount": "Chưa có tài khoản",
+    "usernameHint": "Bỏ trống để dùng mã học viên"
+  },
+  "enrollments": {
+    "title": "Quản lý ghi danh",
+    "create": "Ghi danh học viên",
+    "edit": "Cập nhật ghi danh",
+    "feeHint": "Bỏ trống để lấy học phí của khóa học"
+  },
+  "attendance": {
+    "title": "Điểm danh theo buổi",
+    "historyTitle": "Lịch sử điểm danh",
+    "allPresent": "Có mặt tất cả",
+    "allAbsent": "Vắng tất cả",
+    "notTaken": "Chưa điểm danh",
+    "present": "Có mặt",
+    "absent": "Vắng",
+    "pickClass": "Chọn lớp và buổi học để điểm danh"
+  },
+  "grades": {
+    "title": "Nhập điểm theo lớp",
+    "historyTitle": "Sổ điểm",
+    "pickClass": "Chọn lớp và kỳ kiểm tra để nhập điểm",
+    "rangeHint": "Thang {scheme}: điểm từ {min} đến {max}",
+    "overallHint": "Điểm tổng được tính lại khi lưu"
+  },
+  "users": {
+    "title": "Quản lý tài khoản",
+    "create": "Tạo tài khoản",
+    "edit": "Sửa tài khoản",
+    "resetFor": "Đặt lại mật khẩu cho {username}"
+  },
+  "portal": {
+    "welcome": "Xin chào, {name}",
+    "sessions": "{attended}/{recorded} buổi có mặt",
+    "noClasses": "Bạn chưa ghi danh lớp nào"
+  },
+  "enums": {
+    "role": {
+      "Admin": "Quản trị viên",
+      "Staff": "Giáo vụ",
+      "Student": "Học viên"
+    },
+    "gradingScheme": {
+      "Standard": "Thang 10",
+      "Ielts": "IELTS",
+      "Toeic": "TOEIC"
+    },
+    "learningStatus": {
+      "Studying": "Đang học",
+      "Deferred": "Bảo lưu",
+      "Completed": "Hoàn thành",
+      "Withdrawn": "Đã nghỉ"
+    },
+    "paymentStatus": {
+      "Unpaid": "Chưa đóng",
+      "Partial": "Đóng một phần",
+      "Paid": "Đã đóng đủ"
+    },
+    "examType": {
+      "Placement": "Đầu vào",
+      "Progress1": "Kiểm tra tiến độ 1",
+      "Progress2": "Kiểm tra tiến độ 2",
+      "Midterm": "Giữa kỳ",
+      "Final": "Cuối khóa"
+    },
+    "gender": {
+      "Male": "Nam",
+      "Female": "Nữ",
+      "Other": "Khác"
+    },
+    "englishLevel": {
+      "Beginner": "Mất gốc",
+      "Elementary": "Sơ cấp",
+      "PreIntermediate": "Tiền trung cấp",
+      "Intermediate": "Trung cấp",
+      "UpperIntermediate": "Trung cao cấp",
+      "Advanced": "Nâng cao"
+    }
+  },
+  "errors": {
+    "validation": "Dữ liệu không hợp lệ",
+    "unknown": "Đã có lỗi xảy ra",
+    "network": "Không kết nối được máy chủ",
+    "server": {
+      "error": "Lỗi máy chủ, vui lòng thử lại"
+    },
+    "http": {
+      "403": "Bạn không có quyền thực hiện thao tác này"
+    },
+    "auth": {
+      "invalidCredentials": "Sai tên đăng nhập hoặc mật khẩu",
+      "accountLocked": "Tài khoản đã bị khóa",
+      "required": "Vui lòng đăng nhập"
+    },
+    "course": {
+      "notFound": "Không tìm thấy khóa học",
+      "hasClasses": "Không thể xóa khóa học đã có lớp"
+    },
+    "class": {
+      "notFound": "Không tìm thấy lớp học",
+      "full": "Lớp đã đủ sĩ số",
+      "duplicateCode": "Mã lớp đã tồn tại",
+      "hasEnrollments": "Không thể xóa lớp đã có học viên ghi danh",
+      "capacityBelowEnrolled": "Sĩ số tối đa không được nhỏ hơn số học viên hiện có"
+    },
+    "student": {
+      "notFound": "Không tìm thấy học viên",
+      "duplicateCode": "Mã học viên đã tồn tại",
+      "duplicateEmail": "Email đã được học viên khác sử dụng",
+      "duplicatePhone": "Số điện thoại đã được học viên khác sử dụng",
+      "hasEnrollments": "Không thể xóa học viên đã ghi danh"
+    },
+    "enrollment": {
+      "notFound": "Không tìm thấy ghi danh",
+      "duplicate": "Học viên đã ghi danh vào lớp này",
+      "hasRecords": "Ghi danh đã có điểm danh hoặc điểm, hãy chuyển trạng thái sang Đã nghỉ"
+    },
+    "user": {
+      "notFound": "Không tìm thấy tài khoản",
+      "duplicateUsername": "Tên đăng nhập đã tồn tại",
+      "studentAlreadyLinked": "Học viên này đã có tài khoản khác",
+      "cannotModifySelf": "Không thể khóa, đổi vai trò hoặc xóa tài khoản của chính bạn",
+      "lastAdmin": "Hệ thống cần ít nhất một quản trị viên đang hoạt động"
+    },
+    "grade": {
+      "notFound": "Không tìm thấy điểm",
+      "enrollmentNotInClass": "Có học viên không thuộc lớp này"
+    },
+    "attendance": {
+      "notFound": "Không tìm thấy bản ghi điểm danh",
+      "invalidSession": "Số buổi không hợp lệ với khóa học",
+      "enrollmentNotInClass": "Có học viên không thuộc lớp này"
+    },
+    "portal": {
+      "noStudentProfile": "Tài khoản chưa được gắn với hồ sơ học viên"
+    }
+  },
+  "validation": {
+    "required": "Vui lòng nhập trường này",
+    "maxLength": "Tối đa {max} ký tự",
+    "between": "Giá trị phải từ {min} đến {max}",
+    "email": "Email không hợp lệ",
+    "phone": "Số điện thoại gồm 10 chữ số, bắt đầu bằng 0",
+    "code": "Chỉ gồm chữ, số và . _ -",
+    "password": "Mật khẩu từ 8 đến 100 ký tự",
+    "NotEmptyValidator": "{field} không được để trống",
+    "NotNullValidator": "{field} không được để trống",
+    "MaximumLengthValidator": "{field} tối đa {maxLength} ký tự",
+    "MinimumLengthValidator": "{field} tối thiểu {minLength} ký tự",
+    "InclusiveBetweenValidator": "{field} phải từ {from} đến {to}",
+    "GreaterThanValidator": "{field} phải lớn hơn {comparisonValue}",
+    "GreaterThanOrEqualValidator": "{field} không hợp lệ",
+    "LessThanValidator": "{field} không hợp lệ",
+    "LessThanOrEqualValidator": "{field} không hợp lệ",
+    "NotEqualValidator": "{field} không hợp lệ",
+    "EmailValidator": "{field} không đúng định dạng email",
+    "RegularExpressionValidator": "{field} không đúng định dạng",
+    "EnumValidator": "{field} không hợp lệ",
+    "phoneNumber": {
+      "invalid": "Số điện thoại gồm 10 chữ số, bắt đầu bằng 0"
+    },
+    "file": {
+      "tooLarge": "Ảnh tối đa 2MB",
+      "invalidType": "Chỉ nhận ảnh JPG, PNG, WEBP"
+    },
+    "grade": {
+      "scoreOutOfRange": "{field}: điểm phải từ {min} đến {max}, bước {step}",
+      "duplicateEntry": "Một học viên bị lặp trong danh sách"
+    },
+    "user": {
+      "studentRequired": "Tài khoản học viên phải gắn với một học viên"
+    },
+    "auth": {
+      "wrongPassword": "Mật khẩu hiện tại không đúng"
+    },
+    "attendance": {
+      "duplicateEntry": "Một học viên bị lặp trong danh sách"
+    }
+  }
+}

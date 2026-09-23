@@ -1,0 +1,334 @@
+{
+  "app": {
+    "name": "English Center",
+    "tagline": "Training management system"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "courses": "Courses",
+    "classes": "Classes",
+    "students": "Students",
+    "enrollments": "Enrollments",
+    "attendance": "Attendance",
+    "attendanceHistory": "Attendance history",
+    "grades": "Grade entry",
+    "gradeHistory": "Gradebook",
+    "users": "Accounts",
+    "training": "Training",
+    "system": "System",
+    "myClasses": "My classes",
+    "myAttendance": "My attendance",
+    "myGrades": "My grades",
+    "myProfile": "My profile"
+  },
+  "common": {
+    "search": "Search",
+    "searchPlaceholder": "Type to search...",
+    "add": "Add new",
+    "edit": "Edit",
+    "delete": "Delete",
+    "save": "Save",
+    "cancel": "Cancel",
+    "actions": "Actions",
+    "reset": "Reset",
+    "confirmDelete": "Are you sure you want to delete \"{name}\"?",
+    "saved": "Saved successfully",
+    "deleted": "Deleted",
+    "all": "All",
+    "yes": "Yes",
+    "no": "No",
+    "noData": "No data",
+    "back": "Back",
+    "details": "Details",
+    "upload": "Upload image",
+    "logout": "Sign out",
+    "changePassword": "Change password",
+    "language": "Language",
+    "load": "Load",
+    "active": "Active",
+    "inactive": "Inactive",
+    "locked": "Locked",
+    "select": "Select...",
+    "notFound": "Page not found",
+    "forbidden": "You do not have permission to view this page",
+    "goHome": "Go to home page",
+    "resetPassword": "Reset password",
+    "uploadHint": "JPG, PNG or WEBP, up to 2MB"
+  },
+  "auth": {
+    "title": "Sign in",
+    "subtitle": "Sign in to continue",
+    "submit": "Sign in",
+    "currentPassword": "Current password",
+    "newPassword": "New password",
+    "confirmPassword": "Confirm new password",
+    "passwordChanged": "Password changed",
+    "passwordMismatch": "Passwords do not match"
+  },
+  "fields": {
+    "name": "Name",
+    "description": "Description",
+    "tuitionFee": "Tuition fee",
+    "totalSessions": "Total sessions",
+    "gradingScheme": "Grading scheme",
+    "isActive": "Status",
+    "thumbnail": "Cover image",
+    "code": "Code",
+    "course": "Course",
+    "courseId": "Course",
+    "teacherName": "Teacher",
+    "schedule": "Schedule",
+    "room": "Room",
+    "startDate": "Start date",
+    "endDate": "End date",
+    "maxCapacity": "Capacity",
+    "enrolled": "Enrolled",
+    "fullName": "Full name",
+    "dateOfBirth": "Date of birth",
+    "gender": "Gender",
+    "email": "Email",
+    "phoneNumber": "Phone number",
+    "address": "Address",
+    "entryLevel": "Entry level",
+    "account": "Account",
+    "username": "Username",
+    "password": "Password",
+    "newPassword": "New password",
+    "currentPassword": "Current password",
+    "createAccount": "Create login account",
+    "student": "Student",
+    "studentId": "Student",
+    "class": "Class",
+    "classId": "Class",
+    "enrolledOn": "Enrolled on",
+    "amountPaid": "Amount paid",
+    "balance": "Balance",
+    "paymentStatus": "Payment status",
+    "learningStatus": "Learning status",
+    "sessionNumber": "Session",
+    "sessionDate": "Session date",
+    "isPresent": "Present",
+    "note": "Note",
+    "examType": "Exam",
+    "listening": "Listening",
+    "reading": "Reading",
+    "writing": "Writing",
+    "speaking": "Speaking",
+    "overall": "Overall",
+    "feedback": "Feedback",
+    "role": "Role",
+    "lastLoginAt": "Last sign-in",
+    "attendanceRate": "Attendance",
+    "classCount": "Classes",
+    "students": "Students",
+    "entries": "Entries",
+    "file": "File",
+    "avatar": "Avatar"
+  },
+  "dashboard": {
+    "activeCourses": "Active courses",
+    "openClasses": "Running classes",
+    "students": "Students",
+    "activeEnrollments": "Active enrollments",
+    "collected": "Tuition collected",
+    "outstanding": "Outstanding tuition",
+    "occupancy": "Running class occupancy"
+  },
+  "courses": {
+    "title": "Course management",
+    "create": "New course",
+    "edit": "Edit course"
+  },
+  "classes": {
+    "title": "Class management",
+    "create": "New class",
+    "edit": "Edit class",
+    "studentList": "Students in class"
+  },
+  "students": {
+    "title": "Student management",
+    "create": "New student",
+    "edit": "Edit student",
+    "enrollments": "Enrollments",
+    "hasAccount": "Has account",
+    "noAccount": "No account",
+    "usernameHint": "Leave blank to use the student code"
+  },
+  "enrollments": {
+    "title": "Enrollment management",
+    "create": "Enroll student",
+    "edit": "Update enrollment",
+    "feeHint": "Leave blank to use the course fee"
+  },
+  "attendance": {
+    "title": "Take attendance",
+    "historyTitle": "Attendance history",
+    "allPresent": "Mark all present",
+    "allAbsent": "Mark all absent",
+    "notTaken": "Not taken",
+    "present": "Present",
+    "absent": "Absent",
+    "pickClass": "Select a class and session to take attendance"
+  },
+  "grades": {
+    "title": "Grade entry",
+    "historyTitle": "Gradebook",
+    "pickClass": "Select a class and exam to enter grades",
+    "rangeHint": "{scheme} scale: scores from {min} to {max}",
+    "overallHint": "Overall is recalculated when saved"
+  },
+  "users": {
+    "title": "Account management",
+    "create": "New account",
+    "edit": "Edit account",
+    "resetFor": "Reset password for {username}"
+  },
+  "portal": {
+    "welcome": "Hello, {name}",
+    "sessions": "{attended}/{recorded} sessions attended",
+    "noClasses": "You are not enrolled in any class yet"
+  },
+  "enums": {
+    "role": {
+      "Admin": "Administrator",
+      "Staff": "Staff",
+      "Student": "Student"
+    },
+    "gradingScheme": {
+      "Standard": "10-point scale",
+      "Ielts": "IELTS",
+      "Toeic": "TOEIC"
+    },
+    "learningStatus": {
+      "Studying": "Studying",
+      "Deferred": "Deferred",
+      "Completed": "Completed",
+      "Withdrawn": "Withdrawn"
+    },
+    "paymentStatus": {
+      "Unpaid": "Unpaid",
+      "Partial": "Partially paid",
+      "Paid": "Paid"
+    },
+    "examType": {
+      "Placement": "Placement",
+      "Progress1": "Progress test 1",
+      "Progress2": "Progress test 2",
+      "Midterm": "Midterm",
+      "Final": "Final"
+    },
+    "gender": {
+      "Male": "Male",
+      "Female": "Female",
+      "Other": "Other"
+    },
+    "englishLevel": {
+      "Beginner": "Beginner",
+      "Elementary": "Elementary",
+      "PreIntermediate": "Pre-intermediate",
+      "Intermediate": "Intermediate",
+      "UpperIntermediate": "Upper-intermediate",
+      "Advanced": "Advanced"
+    }
+  },
+  "errors": {
+    "validation": "Invalid data",
+    "unknown": "Something went wrong",
+    "network": "Cannot reach the server",
+    "server": {
+      "error": "Server error, please try again"
+    },
+    "http": {
+      "403": "You are not allowed to do this"
+    },
+    "auth": {
+      "invalidCredentials": "Invalid username or password",
+      "accountLocked": "This account is locked",
+      "required": "Please sign in"
+    },
+    "course": {
+      "notFound": "Course not found",
+      "hasClasses": "Cannot delete a course that has classes"
+    },
+    "class": {
+      "notFound": "Class not found",
+      "full": "The class is full",
+      "duplicateCode": "Class code already exists",
+      "hasEnrollments": "Cannot delete a class with enrollments",
+      "capacityBelowEnrolled": "Capacity cannot be lower than the current number of students"
+    },
+    "student": {
+      "notFound": "Student not found",
+      "duplicateCode": "Student code already exists",
+      "duplicateEmail": "Email is already used by another student",
+      "duplicatePhone": "Phone number is already used by another student",
+      "hasEnrollments": "Cannot delete a student with enrollments"
+    },
+    "enrollment": {
+      "notFound": "Enrollment not found",
+      "duplicate": "The student is already enrolled in this class",
+      "hasRecords": "The enrollment has attendance or grades; set its status to Withdrawn instead"
+    },
+    "user": {
+      "notFound": "Account not found",
+      "duplicateUsername": "Username already exists",
+      "studentAlreadyLinked": "This student already has an account",
+      "cannotModifySelf": "You cannot lock, change the role of, or delete your own account",
+      "lastAdmin": "At least one active administrator is required"
+    },
+    "grade": {
+      "notFound": "Grade not found",
+      "enrollmentNotInClass": "Some students do not belong to this class"
+    },
+    "attendance": {
+      "notFound": "Attendance record not found",
+      "invalidSession": "Session number is out of range for the course",
+      "enrollmentNotInClass": "Some students do not belong to this class"
+    },
+    "portal": {
+      "noStudentProfile": "This account is not linked to a student profile"
+    }
+  },
+  "validation": {
+    "required": "This field is required",
+    "maxLength": "At most {max} characters",
+    "between": "Value must be between {min} and {max}",
+    "email": "Invalid email address",
+    "phone": "Phone number must be 10 digits starting with 0",
+    "code": "Letters, digits and . _ - only",
+    "password": "Password must be 8 to 100 characters",
+    "NotEmptyValidator": "{field} is required",
+    "NotNullValidator": "{field} is required",
+    "MaximumLengthValidator": "{field} must be at most {maxLength} characters",
+    "MinimumLengthValidator": "{field} must be at least {minLength} characters",
+    "InclusiveBetweenValidator": "{field} must be between {from} and {to}",
+    "GreaterThanValidator": "{field} must be greater than {comparisonValue}",
+    "GreaterThanOrEqualValidator": "{field} is invalid",
+    "LessThanValidator": "{field} is invalid",
+    "LessThanOrEqualValidator": "{field} is invalid",
+    "NotEqualValidator": "{field} is invalid",
+    "EmailValidator": "{field} is not a valid email address",
+    "RegularExpressionValidator": "{field} has an invalid format",
+    "EnumValidator": "{field} is invalid",
+    "phoneNumber": {
+      "invalid": "Phone number must be 10 digits starting with 0"
+    },
+    "file": {
+      "tooLarge": "Image must be at most 2MB",
+      "invalidType": "Only JPG, PNG or WEBP images are allowed"
+    },
+    "grade": {
+      "scoreOutOfRange": "{field}: score must be between {min} and {max} in steps of {step}",
+      "duplicateEntry": "A student appears more than once"
+    },
+    "user": {
+      "studentRequired": "A student account must be linked to a student"
+    },
+    "auth": {
+      "wrongPassword": "Current password is incorrect"
+    },
+    "attendance": {
+      "duplicateEntry": "A student appears more than once"
+    }
+  }
+}
