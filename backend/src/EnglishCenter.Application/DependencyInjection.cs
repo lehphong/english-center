@@ -1,3 +1,4 @@
+using EnglishCenter.Application.Features.Attendance;
 using EnglishCenter.Application.Features.Auth;
 using EnglishCenter.Application.Features.Classes;
 using EnglishCenter.Application.Features.Courses;
@@ -23,6 +24,7 @@ public static class DependencyInjection
         services.AddScoped<IStudentService, StudentService>();
         services.AddScoped<IUserService, UserService>();
         services.AddScoped<IEnrollmentService, EnrollmentService>();
+        services.AddScoped<IAttendanceService, AttendanceService>();
 
         return services;
     }
