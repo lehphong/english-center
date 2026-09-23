@@ -1,5 +1,6 @@
 <Solution>
   <Folder Name="/src/">
+    <Project Path="src/EnglishCenter.Application/EnglishCenter.Application.csproj" />
     <Project Path="src/EnglishCenter.Domain/EnglishCenter.Domain.csproj" />
   </Folder>
 </Solution>
