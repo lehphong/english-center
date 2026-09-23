@@ -1,6 +1,7 @@
 using EnglishCenter.Application.Features.Auth;
 using EnglishCenter.Application.Features.Classes;
 using EnglishCenter.Application.Features.Courses;
+using EnglishCenter.Application.Features.Students;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -17,6 +18,7 @@ public static class DependencyInjection
         services.AddScoped<IAuthService, AuthService>();
         services.AddScoped<ICourseService, CourseService>();
         services.AddScoped<IClassService, ClassService>();
+        services.AddScoped<IStudentService, StudentService>();
 
         return services;
     }
