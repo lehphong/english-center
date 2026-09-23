@@ -2,5 +2,6 @@
   <Folder Name="/src/">
     <Project Path="src/EnglishCenter.Application/EnglishCenter.Application.csproj" />
     <Project Path="src/EnglishCenter.Domain/EnglishCenter.Domain.csproj" />
+    <Project Path="src/EnglishCenter.Infrastructure/EnglishCenter.Infrastructure.csproj" />
   </Folder>
 </Solution>
