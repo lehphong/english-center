@@ -76,7 +76,7 @@ async function remove(student: Student) {
             <div class="muted">{{ row.phoneNumber }}</div>
           </template>
         </ElTableColumn>
-        <ElTableColumn :label="t('fields.dateOfBirth')" width="120">
+        <ElTableColumn :label="t('fields.dateOfBirth')" width="150">
           <template #default="{ row }">{{ date(row.dateOfBirth) }}</template>
         </ElTableColumn>
         <ElTableColumn :label="t('fields.entryLevel')" width="140">
@@ -84,11 +84,11 @@ async function remove(student: Student) {
         </ElTableColumn>
         <ElTableColumn :label="t('fields.account')" width="130">
           <template #default="{ row }">
-            <ElTag v-if="row.username" type="success">{{ row.username }}</ElTag>
+            <span v-if="row.username" class="code">{{ row.username }}</span>
             <span v-else class="muted">—</span>
           </template>
         </ElTableColumn>
-        <ElTableColumn prop="enrollmentCount" :label="t('fields.classCount')" width="80" align="center" />
+        <ElTableColumn prop="enrollmentCount" :label="t('fields.classCount')" width="110" align="center" />
         <ElTableColumn :label="t('common.actions')" width="150" fixed="right">
           <template #default="{ row }">
             <ElButton link type="primary" @click="openForm(row as Student)">{{ t('common.edit') }}</ElButton>

@@ -79,7 +79,7 @@ async function remove(user: User) {
         </ElTableColumn>
         <ElTableColumn :label="t('fields.isActive')" width="140">
           <template #default="{ row }">
-            <ElTag :type="row.isActive ? 'success' : 'info'">{{ row.isActive ? t('common.active') : t('common.locked') }}</ElTag>
+            <StatusTag :tone="row.isActive ? 'success' : 'neutral'" :label="row.isActive ? t('common.active') : t('common.locked')" />
           </template>
         </ElTableColumn>
         <ElTableColumn :label="t('fields.lastLoginAt')" width="170">

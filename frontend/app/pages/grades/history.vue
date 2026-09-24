@@ -66,10 +66,10 @@ async function remove(grade: Grade) {
         <ElTableColumn :label="t('fields.examType')" width="150">
           <template #default="{ row }">{{ label('examType', row.examType) }}</template>
         </ElTableColumn>
-        <ElTableColumn v-for="skill in ['listening', 'reading', 'writing', 'speaking']" :key="skill" :label="t(`fields.${skill}`)" width="80" align="center">
+        <ElTableColumn v-for="skill in ['listening', 'reading', 'writing', 'speaking']" :key="skill" :label="t(`fields.${skill}`)" width="110" align="center">
           <template #default="{ row }">{{ score(row[skill]) }}</template>
         </ElTableColumn>
-        <ElTableColumn :label="t('fields.overall')" width="80" align="center">
+        <ElTableColumn :label="t('fields.overall')" width="100" align="center">
           <template #default="{ row }"><strong>{{ score(row.overall) }}</strong></template>
         </ElTableColumn>
         <ElTableColumn prop="feedback" :label="t('fields.feedback')" min-width="180" />

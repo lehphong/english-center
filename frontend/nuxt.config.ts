@@ -8,7 +8,8 @@ export default defineNuxtConfig({
 
   modules: ['@element-plus/nuxt', '@pinia/nuxt', '@nuxtjs/i18n', '@nuxt/eslint'],
 
-  css: ['~/assets/css/main.css'],
+  // Thứ tự: token của design system → ánh xạ Element Plus → style chung
+  css: ['~/assets/css/tokens.css', '~/assets/css/element-plus.css', '~/assets/css/main.css'],
 
   components: [{ path: '~/components', pathPrefix: false }],
 
@@ -51,7 +52,15 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      link: [{ rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
+      link: [
+        { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+        { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+        { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
+        {
+          rel: 'stylesheet',
+          href: 'https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap',
+        },
+      ],
     },
   },
 })

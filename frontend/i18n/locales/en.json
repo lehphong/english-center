@@ -53,7 +53,9 @@
     "forbidden": "You do not have permission to view this page",
     "goHome": "Go to home page",
     "resetPassword": "Reset password",
-    "uploadHint": "JPG, PNG or WEBP, up to 2MB"
+    "uploadHint": "JPG, PNG or WEBP, up to 2MB",
+    "darkMode": "Dark mode",
+    "lightMode": "Light mode"
   },
   "auth": {
     "title": "Sign in",

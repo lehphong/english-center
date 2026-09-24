@@ -1,0 +1,197 @@
+/*
+ * Element Plus theo design system Hoàng Thổ.
+ * Element Plus dùng chung --el-color-primary cho CHỮ (link, trang hiện tại, tab) và NỀN (nút, switch).
+ * `ochre` chỉ đạt 2.5:1 khi làm chữ trên nền sáng, nên primary = `ochre-ink` (đạt 4.5:1 ở mọi nơi),
+ * còn các khối nền nhấn (nút chính, radio-button, thanh tiến độ) được đặt lại thành `ochre` + chữ `on-ochre`.
+ * Selector có tiền tố `html` để thắng CSS của Element Plus bất kể thứ tự nạp.
+ */
+html:root,
+html.dark {
+  --el-font-family: var(--font-sans);
+  --el-font-size-base: 14px;
+
+  --el-color-primary: var(--ochre-ink);
+  --el-color-primary-light-3: var(--ochre);
+  --el-color-primary-light-5: var(--ochre);
+  --el-color-primary-light-7: var(--ochre-soft);
+  --el-color-primary-light-8: var(--ochre-soft);
+  --el-color-primary-light-9: var(--ochre-soft);
+  --el-color-primary-dark-2: var(--ochre-ink);
+
+  --el-color-success: var(--success);
+  --el-color-success-light-3: var(--success);
+  --el-color-success-light-5: var(--success);
+  --el-color-success-light-7: var(--success-soft);
+  --el-color-success-light-8: var(--success-soft);
+  --el-color-success-light-9: var(--success-soft);
+  --el-color-success-dark-2: var(--success);
+
+  --el-color-warning: var(--warning);
+  --el-color-warning-light-3: var(--warning);
+  --el-color-warning-light-5: var(--warning);
+  --el-color-warning-light-7: var(--warning-soft);
+  --el-color-warning-light-8: var(--warning-soft);
+  --el-color-warning-light-9: var(--warning-soft);
+  --el-color-warning-dark-2: var(--warning);
+
+  --el-color-danger: var(--danger);
+  --el-color-danger-light-3: var(--danger);
+  --el-color-danger-light-5: var(--danger);
+  --el-color-danger-light-7: var(--danger-soft);
+  --el-color-danger-light-8: var(--danger-soft);
+  --el-color-danger-light-9: var(--danger-soft);
+  --el-color-danger-dark-2: var(--danger);
+  --el-color-error: var(--danger);
+  --el-color-error-light-9: var(--danger-soft);
+
+  /* Element Plus dùng "info" như màu trung tính (tag, message), không phải xanh thông tin */
+  --el-color-info: var(--ink-muted);
+  --el-color-info-light-3: var(--ink-subtle);
+  --el-color-info-light-5: var(--line-strong);
+  --el-color-info-light-7: var(--line);
+  --el-color-info-light-8: var(--surface-sunken);
+  --el-color-info-light-9: var(--surface-sunken);
+  --el-color-info-dark-2: var(--ink);
+
+  --el-text-color-primary: var(--ink);
+  --el-text-color-regular: var(--ink);
+  --el-text-color-secondary: var(--ink-muted);
+  --el-text-color-placeholder: var(--ink-subtle);
+  --el-text-color-disabled: var(--ink-subtle);
+
+  --el-bg-color: var(--surface);
+  --el-bg-color-page: var(--ground);
+  --el-bg-color-overlay: var(--surface);
+
+  --el-border-color: var(--line-strong);
+  --el-border-color-hover: var(--ink-muted);
+  --el-border-color-light: var(--line);
+  --el-border-color-lighter: var(--line);
+  --el-border-color-extra-light: var(--surface-sunken);
+  --el-border-color-dark: var(--line-strong);
+  --el-border-color-darker: var(--ink-muted);
+
+  --el-fill-color: var(--surface-sunken);
+  --el-fill-color-light: var(--surface-sunken);
+  --el-fill-color-lighter: var(--surface-sunken);
+  --el-fill-color-extra-light: var(--ground);
+  --el-fill-color-dark: var(--line);
+  --el-fill-color-darker: var(--line-strong);
+  --el-fill-color-blank: var(--surface);
+
+  --el-border-radius-base: var(--radius-md);
+  --el-border-radius-small: var(--radius-sm);
+  --el-border-radius-round: var(--radius-pill);
+
+  --el-box-shadow: var(--shadow-overlay);
+  --el-box-shadow-light: var(--shadow-overlay);
+  --el-box-shadow-lighter: var(--shadow-raised);
+  --el-box-shadow-dark: var(--shadow-overlay);
+  --el-mask-color: rgba(23, 18, 13, 0.55);
+  --el-overlay-color-lighter: rgba(23, 18, 13, 0.5);
+}
+
+/* Nút chính: nền Hoàng Thổ, chữ nâu — không bao giờ chữ trắng trên `ochre` */
+html .el-button--primary {
+  --el-button-bg-color: var(--ochre);
+  --el-button-border-color: var(--ochre);
+  --el-button-text-color: var(--on-ochre);
+  --el-button-hover-bg-color: var(--ochre-hover);
+  --el-button-hover-border-color: var(--ochre-hover);
+  --el-button-hover-text-color: var(--on-ochre);
+  --el-button-active-bg-color: var(--ochre-hover);
+  --el-button-active-border-color: var(--ochre-hover);
+  --el-button-active-text-color: var(--on-ochre);
+  --el-button-disabled-bg-color: var(--ochre);
+  --el-button-disabled-border-color: var(--ochre);
+  --el-button-disabled-text-color: var(--on-ochre);
+  font-weight: 600;
+}
+
+html .el-button--primary.is-disabled {
+  opacity: 0.45;
+}
+
+/* Nút "plain" (vd Tìm kiếm) là nút phụ: nền mặt, chữ Hoàng Thổ */
+html .el-button--primary.is-plain {
+  --el-button-bg-color: var(--surface);
+  --el-button-text-color: var(--ochre-ink);
+  --el-button-border-color: var(--line-strong);
+  --el-button-hover-bg-color: var(--ochre-soft);
+  --el-button-hover-text-color: var(--ochre-ink);
+  --el-button-hover-border-color: var(--ochre-ink);
+}
+
+html .el-button--danger:not(.is-link):not(.is-text) {
+  --el-button-text-color: var(--on-danger);
+  --el-button-hover-text-color: var(--on-danger);
+  --el-button-active-text-color: var(--on-danger);
+}
+
+html .el-radio-button__original-radio:checked + .el-radio-button__inner {
+  background-color: var(--ochre);
+  border-color: var(--ochre);
+  box-shadow: -1px 0 0 0 var(--ochre);
+  color: var(--on-ochre);
+}
+
+html .el-progress-bar__inner {
+  background-color: var(--ochre);
+}
+
+html .el-progress.is-exception .el-progress-bar__inner {
+  background-color: var(--danger);
+}
+
+html .el-progress__text {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Control: viền `line-strong`, góc `radius-sm`, focus là viền liền `focus-ring` */
+html .el-input__wrapper,
+html .el-select__wrapper,
+html .el-textarea__inner,
+html .el-input-number .el-input__wrapper {
+  border-radius: var(--radius-sm);
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+/* Bảng: phẳng, hairline `line`, header lõm kiểu nhãn */
+html .el-table {
+  --el-table-header-bg-color: var(--surface-sunken);
+  --el-table-header-text-color: var(--ink-muted);
+  --el-table-row-hover-bg-color: var(--surface-sunken);
+  --el-table-border-color: var(--line);
+  --el-table-text-color: var(--ink);
+}
+
+html .el-table th.el-table__cell > .cell {
+  word-break: normal;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* Card: viền hairline, không đổ bóng (bóng chỉ dành cho thẻ chỉ số) */
+html .el-card {
+  --el-card-border-color: var(--line);
+  --el-card-border-radius: var(--radius-md);
+}
+
+html .el-dialog {
+  --el-dialog-border-radius: var(--radius-md);
+}
+
+html .el-dialog__title {
+  font-weight: 600;
+}
+
+html .el-message {
+  --el-message-border-radius: var(--radius-md);
+}

@@ -81,7 +81,8 @@ async function remove(courseClass: CourseClass) {
         </ElTableColumn>
         <ElTableColumn :label="t('fields.enrolled')" width="110" align="center">
           <template #default="{ row }">
-            <ElTag :type="row.enrolledCount >= row.maxCapacity ? 'danger' : 'info'">{{ row.enrolledCount }}/{{ row.maxCapacity }}</ElTag>
+            <StatusTag v-if="row.enrolledCount >= row.maxCapacity" tone="danger" :label="`${row.enrolledCount}/${row.maxCapacity}`" />
+            <span v-else class="num">{{ row.enrolledCount }}/{{ row.maxCapacity }}</span>
           </template>
         </ElTableColumn>
         <ElTableColumn :label="t('common.actions')" width="200" fixed="right">

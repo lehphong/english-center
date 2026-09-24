@@ -26,6 +26,8 @@ h1 {
   margin: 0;
   font-size: 22px;
   font-weight: 600;
+  line-height: 30px;
+  text-wrap: balance;
 }
 
 p {

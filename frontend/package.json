@@ -15,7 +15,8 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "tokens": "node scripts/build-tokens.mjs"
   },
   "dependencies": {
     "@element-plus/icons-vue": "2.3.2",

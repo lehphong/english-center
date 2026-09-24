@@ -60,13 +60,13 @@ async function remove(record: AttendanceRecord) {
           </template>
         </ElTableColumn>
         <ElTableColumn prop="classCode" :label="t('fields.class')" width="150" />
-        <ElTableColumn prop="sessionNumber" :label="t('fields.sessionNumber')" width="90" align="center" />
+        <ElTableColumn prop="sessionNumber" :label="t('fields.sessionNumber')" width="100" align="center" />
         <ElTableColumn :label="t('fields.sessionDate')" width="130">
           <template #default="{ row }">{{ date(row.sessionDate) }}</template>
         </ElTableColumn>
         <ElTableColumn :label="t('fields.isPresent')" width="120">
           <template #default="{ row }">
-            <ElTag :type="row.isPresent ? 'success' : 'danger'">{{ row.isPresent ? t('attendance.present') : t('attendance.absent') }}</ElTag>
+            <StatusTag :tone="row.isPresent ? 'success' : 'danger'" :label="row.isPresent ? t('attendance.present') : t('attendance.absent')" />
           </template>
         </ElTableColumn>
         <ElTableColumn prop="note" :label="t('fields.note')" min-width="180" />

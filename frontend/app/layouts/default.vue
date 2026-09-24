@@ -2,7 +2,6 @@
 import {
   Calendar,
   Collection,
-  DataAnalysis,
   Document,
   EditPen,
   Notebook,
@@ -59,7 +58,7 @@ const activeMenu = computed(() => {
   <ElContainer class="layout">
     <ElAside class="aside">
       <NuxtLink to="/dashboard" class="brand">
-        <ElIcon :size="22"><DataAnalysis /></ElIcon>
+        <BrandMark />
         <span>{{ t('app.name') }}</span>
       </NuxtLink>
       <ElMenu :default-active="activeMenu" class="menu" @select="(index: string) => navigateTo(index)">
@@ -77,11 +76,12 @@ const activeMenu = computed(() => {
       <ElHeader class="header">
         <span class="muted">{{ t('app.tagline') }}</span>
         <div class="header-actions">
+          <ThemeSwitcher />
           <LanguageSwitcher />
           <UserMenu />
         </div>
       </ElHeader>
-      <ElMain>
+      <ElMain class="main">
         <slot />
       </ElMain>
     </ElContainer>
@@ -93,38 +93,90 @@ const activeMenu = computed(() => {
   min-height: 100vh;
 }
 
+/* 30% cấu trúc: khung điều hướng nền Nâu Đất */
 .aside {
   width: var(--app-sidebar-width);
-  background: #fff;
-  border-right: 1px solid var(--el-border-color-lighter);
+  padding: 0 var(--space-2) var(--space-4);
+  background: var(--umber);
 }
 
 .brand {
   display: flex;
   align-items: center;
-  gap: 10px;
-  height: 60px;
-  padding: 0 20px;
-  font-weight: 600;
-  color: var(--el-color-primary);
+  gap: var(--space-2);
+  height: 64px;
+  padding: 0 var(--space-3);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--on-umber);
+  text-decoration: none;
+}
+
+.brand:hover {
   text-decoration: none;
 }
 
 .menu {
+  --el-menu-bg-color: var(--umber);
+  --el-menu-text-color: var(--on-umber-muted);
+  --el-menu-hover-text-color: var(--on-umber);
+  --el-menu-hover-bg-color: var(--umber-soft);
+  --el-menu-active-color: var(--on-umber);
+  --el-menu-item-height: 40px;
+  --el-menu-item-font-size: 14px;
+  --el-menu-base-level-padding: 12px;
   border-right: none;
+}
+
+.menu :deep(.el-menu-item-group__title) {
+  padding: var(--space-4) var(--space-3) var(--space-1) !important;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 16px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--on-umber-muted);
+}
+
+.menu :deep(.el-menu-item) {
+  position: relative;
+  margin-bottom: 2px;
+  border-radius: var(--radius-sm);
+  font-weight: 500;
+}
+
+/* Mục đang chọn: nền umber-soft + vạch Hoàng Thổ — dấu ochre duy nhất trong sidebar */
+.menu :deep(.el-menu-item.is-active) {
+  background: var(--umber-soft);
+}
+
+.menu :deep(.el-menu-item.is-active)::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  bottom: 8px;
+  width: 3px;
+  border-radius: 2px;
+  background: var(--ochre);
 }
 
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #fff;
-  border-bottom: 1px solid var(--el-border-color-lighter);
+  height: 64px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
 }
 
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: var(--space-3);
+}
+
+.main {
+  padding: var(--space-5);
 }
 </style>

@@ -53,7 +53,9 @@
     "forbidden": "Bạn không có quyền truy cập trang này",
     "goHome": "Về trang chủ",
     "resetPassword": "Đặt lại mật khẩu",
-    "uploadHint": "JPG, PNG hoặc WEBP, tối đa 2MB"
+    "uploadHint": "JPG, PNG hoặc WEBP, tối đa 2MB",
+    "darkMode": "Giao diện tối",
+    "lightMode": "Giao diện sáng"
   },
   "auth": {
     "title": "Đăng nhập",

@@ -123,7 +123,7 @@ async function save() {
         <ElTableColumn :label="t('fields.fullName')" min-width="200">
           <template #default="{ row }">
             {{ row.studentName }}
-            <ElTag v-if="!row.taken" size="small" type="info" style="margin-left: 8px">{{ t('attendance.notTaken') }}</ElTag>
+            <StatusTag v-if="!row.taken" tone="neutral" :label="t('attendance.notTaken')" style="margin-left: 8px" />
           </template>
         </ElTableColumn>
         <ElTableColumn :label="t('fields.isPresent')" width="200">

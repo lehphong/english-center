@@ -13,7 +13,10 @@ const items = computed(() => [
 <template>
   <div class="portal">
     <header class="header">
-      <NuxtLink to="/portal" class="brand">{{ t('app.name') }}</NuxtLink>
+      <NuxtLink to="/portal" class="brand">
+        <BrandMark />
+        <span>{{ t('app.name') }}</span>
+      </NuxtLink>
       <ElMenu
         mode="horizontal"
         :default-active="route.path"
@@ -24,6 +27,7 @@ const items = computed(() => [
         <ElMenuItem v-for="item in items" :key="item.to" :index="item.to">{{ item.label }}</ElMenuItem>
       </ElMenu>
       <div class="header-actions">
+        <ThemeSwitcher />
         <LanguageSwitcher />
         <UserMenu />
       </div>
@@ -35,36 +39,69 @@ const items = computed(() => [
 </template>
 
 <style scoped>
+.portal {
+  min-height: 100vh;
+}
+
+/* 30% cấu trúc: thanh trên nền Nâu Đất */
 .header {
   display: flex;
   align-items: center;
-  gap: 24px;
-  padding: 0 24px;
-  background: #fff;
-  border-bottom: 1px solid var(--el-border-color-lighter);
+  gap: var(--space-5);
+  height: 64px;
+  padding: 0 var(--space-5);
+  background: var(--umber);
+  color: var(--on-umber);
 }
 
 .brand {
-  font-weight: 600;
-  color: var(--el-color-primary);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--on-umber);
   text-decoration: none;
   white-space: nowrap;
 }
 
+.brand:hover {
+  text-decoration: none;
+}
+
 .menu {
+  --el-menu-bg-color: var(--umber);
+  --el-menu-text-color: var(--on-umber-muted);
+  --el-menu-hover-text-color: var(--on-umber);
+  --el-menu-hover-bg-color: var(--umber-soft);
+  --el-menu-active-color: var(--on-umber);
+  --el-menu-horizontal-height: 64px;
   flex: 1;
   border-bottom: none;
+}
+
+.menu :deep(.el-menu-item) {
+  font-weight: 500;
+}
+
+/* Mục đang chọn: gạch chân Hoàng Thổ */
+.menu :deep(.el-menu-item.is-active) {
+  border-bottom: 3px solid var(--ochre) !important;
 }
 
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: var(--space-3);
+}
+
+.header-actions :deep(.muted) {
+  color: var(--on-umber-muted);
 }
 
 .content {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 24px;
+  padding: var(--space-5);
 }
 </style>

@@ -34,21 +34,21 @@ async function submit() {
 </script>
 
 <template>
-  <ElCard class="login-card" shadow="always">
+  <section class="login">
     <div class="heading">
-      <h1>{{ t('app.name') }}</h1>
+      <h1>{{ t('auth.title') }}</h1>
       <p class="muted">{{ t('auth.subtitle') }}</p>
     </div>
-    <ElForm ref="formRef" :model="form" :rules="formRules" size="large" @submit.prevent="submit">
-      <ElFormItem prop="username">
-        <ElInput v-model="form.username" :placeholder="t('fields.username')" :prefix-icon="User" autocomplete="username" autofocus />
+    <ElForm ref="formRef" :model="form" :rules="formRules" label-position="top" size="large" @submit.prevent="submit">
+      <ElFormItem :label="t('fields.username')" prop="username">
+        <ElInput id="username" v-model="form.username" :prefix-icon="User" autocomplete="username" autofocus />
       </ElFormItem>
-      <ElFormItem prop="password">
+      <ElFormItem :label="t('fields.password')" prop="password">
         <ElInput
+          id="password"
           v-model="form.password"
           type="password"
           show-password
-          :placeholder="t('fields.password')"
           :prefix-icon="Lock"
           autocomplete="current-password"
         />
@@ -56,35 +56,46 @@ async function submit() {
       <ElButton type="primary" native-type="submit" :loading="loading" class="submit">{{ t('auth.submit') }}</ElButton>
     </ElForm>
     <div class="footer">
+      <ThemeSwitcher />
       <LanguageSwitcher />
     </div>
-  </ElCard>
+  </section>
 </template>
 
 <style scoped>
-.login-card {
+.login {
   width: 100%;
-  max-width: 400px;
+  max-width: 380px;
+  padding: var(--space-6);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
 }
 
 .heading {
-  margin-bottom: 24px;
-  text-align: center;
+  margin-bottom: var(--space-5);
 }
 
 .heading h1 {
   margin: 0;
-  font-size: 24px;
-  color: var(--el-color-primary);
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 30px;
+}
+
+.heading p {
+  margin: var(--space-1) 0 0;
 }
 
 .submit {
   width: 100%;
+  margin-top: var(--space-2);
 }
 
 .footer {
   display: flex;
-  justify-content: center;
-  margin-top: 16px;
+  justify-content: flex-end;
+  gap: var(--space-2);
+  margin-top: var(--space-5);
 }
 </style>

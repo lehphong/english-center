@@ -83,11 +83,11 @@ async function remove(enrollment: Enrollment) {
           <template #default="{ row }">{{ date(row.enrolledOn) }}</template>
         </ElTableColumn>
         <ElTableColumn :label="t('fields.tuitionFee')" width="140" align="right">
-          <template #default="{ row }">{{ money(row.tuitionFee) }}</template>
+          <template #default="{ row }"><span class="num">{{ money(row.tuitionFee) }}</span></template>
         </ElTableColumn>
         <ElTableColumn :label="t('fields.balance')" width="140" align="right">
           <template #default="{ row }">
-            <span :class="{ debt: row.balance > 0 }">{{ money(row.balance) }}</span>
+            <span class="num" :class="{ debt: row.balance > 0 }">{{ money(row.balance) }}</span>
           </template>
         </ElTableColumn>
         <ElTableColumn :label="t('fields.paymentStatus')" width="160">
@@ -119,8 +119,8 @@ async function remove(enrollment: Enrollment) {
 </template>
 
 <style scoped>
+/* Số tiền không mang màu: trạng thái nằm ở cột "Tình trạng học phí" */
 .debt {
-  color: var(--el-color-danger);
   font-weight: 600;
 }
 </style>

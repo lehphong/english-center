@@ -93,13 +93,13 @@ async function remove(course: Course) {
           <template #default="{ row }">{{ options('gradingScheme').find((o) => o.value === row.gradingScheme)?.label }}</template>
         </ElTableColumn>
         <ElTableColumn :label="t('fields.tuitionFee')" width="150" align="right">
-          <template #default="{ row }">{{ money(row.tuitionFee) }}</template>
+          <template #default="{ row }"><span class="num">{{ money(row.tuitionFee) }}</span></template>
         </ElTableColumn>
-        <ElTableColumn prop="totalSessions" :label="t('fields.totalSessions')" width="120" align="center" />
-        <ElTableColumn prop="classCount" :label="t('fields.classCount')" width="90" align="center" />
+        <ElTableColumn prop="totalSessions" :label="t('fields.totalSessions')" width="150" align="center" />
+        <ElTableColumn prop="classCount" :label="t('fields.classCount')" width="110" align="center" />
         <ElTableColumn :label="t('fields.isActive')" width="140">
           <template #default="{ row }">
-            <ElTag :type="row.isActive ? 'success' : 'info'">{{ row.isActive ? t('common.active') : t('common.inactive') }}</ElTag>
+            <StatusTag :tone="row.isActive ? 'success' : 'neutral'" :label="row.isActive ? t('common.active') : t('common.inactive')" />
           </template>
         </ElTableColumn>
         <ElTableColumn :label="t('common.actions')" width="230" fixed="right">
