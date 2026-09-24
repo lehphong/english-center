@@ -1,0 +1,33 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+
+<Meta title="Giới thiệu" />
+
+# Hoàng Thổ
+
+Hệ thống thiết kế của **English Center**. Bảng màu dựng theo mệnh Thổ: vàng đất làm điểm nhấn, nâu đất làm khung,
+nền màu cát sáng. Token nằm ở `design-system/tokens.json` — nguồn duy nhất; `pnpm tokens` sinh ra
+`app/assets/css/tokens.css`, và test `design-tokens.test.ts` kiểm tra lại độ tương phản ở cả hai theme.
+
+## Vì sao là những màu này
+
+| Ngũ hành | Áp dụng |
+|---|---|
+| **Thổ** — bản mệnh | `ochre` (vàng đất) là nhận diện, `umber` (nâu đất) là khung điều hướng |
+| **Hỏa sinh Thổ** | sắc hổ phách ấm trong `ochre`; đỏ không làm màu thương hiệu vì đỏ đã mang nghĩa lỗi |
+| **Mộc khắc Thổ** | xanh lá không làm nhận diện, chỉ còn nghĩa *thành công*, diện tích nhỏ, tông rêu |
+| **Thổ khắc Thủy** | xanh dương chỉ dùng cho *thông tin* |
+
+## 10 nguyên tắc màu
+
+1. **60 – 30 – 10** — `ground`/`surface` 60%, `umber` + chữ 30%, `ochre` 10%. Xem **Foundations › Màu**.
+2. **Thứ bậc** — nút `ochre` / số liệu nhấn → tiêu đề → dữ liệu → nhãn `ink-muted` → placeholder `ink-subtle`.
+3. **Hòa hợp** — tương đồng (analogous) vàng đất → cam đất → nâu; xanh dương là bổ túc, chỉ cho thông tin.
+4. **Tương phản** — mọi cặp chữ/nền ≥ 4.5:1, viền control và focus ≥ 3:1, kiểm tra tự động bằng test.
+5. **Nhất quán** — một trạng thái luôn một tone (xem **Components › StatusTag**).
+6. **Ngữ nghĩa** — xanh lá thành công, đỏ lỗi, cam cảnh báo, xanh dương thông tin.
+7. **Bối cảnh** — văn phòng giáo vụ: vững chãi, ấm, đáng tin; không vui nhộn.
+8. **Độ bão hòa** — `ochre` bão hòa nhất nên chỉ chiếm 10% diện tích; các màu semantic dùng nền `-soft`.
+9. **Khả năng tiếp cận** — tag luôn có hình + chữ; addon **Accessibility** chạy trên mọi story.
+10. **Mục đích hơn trang trí** — không tô màu số tiền, không dùng tag làm nhãn trang trí.
+
+Bản brand book đầy đủ (nguyên tắc nội dung, icon, trạng thái tương tác) nằm trong design system Hoàng Thổ.
