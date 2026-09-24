@@ -7,6 +7,7 @@ Hệ thống quản lý trung tâm Anh ngữ: khóa học, lớp học, học vi
 | Backend | .NET 10, ASP.NET Core Web API, EF Core 10 + SQL Server, FluentValidation, JWT |
 | Frontend | Nuxt 4 (SPA), Vue 3, TypeScript, Element Plus, Pinia, @nuxtjs/i18n |
 | Kiểm thử | xUnit (unit + integration trên SQLite in-memory), Vitest + @nuxt/test-utils |
+| Design system | Hoàng Thổ — token trong `frontend/design-system/tokens.json`, Storybook 10 |
 | Hạ tầng | Docker Compose (SQL Server, API, nginx), GitHub Actions |
 
 ## Chạy nhanh bằng Docker
@@ -43,6 +44,20 @@ pnpm install
 pnpm dev
 ```
 
+## Design system Hoàng Thổ
+
+Giao diện theo design system **Hoàng Thổ**: bảng màu mệnh Thổ (vàng đất `ochre` làm điểm nhấn, nâu đất `umber` làm khung, nền cát sáng) theo quy tắc 60 – 30 – 10, chữ Be Vietnam Pro và IBM Plex Mono, hai theme sáng / tối.
+
+- **Nguồn duy nhất**: `frontend/design-system/tokens.json`. Sửa token ở đây rồi chạy `pnpm tokens` để sinh lại `app/assets/css/tokens.css`.
+- **Element Plus** được ánh xạ sang token trong `app/assets/css/element-plus.css`.
+- **Kiểm tra tự động**: `test/unit/design-tokens.test.ts` báo lỗi khi `tokens.css` lệch khỏi `tokens.json`, hoặc khi một cặp chữ / nền dưới chuẩn WCAG (4.5:1 cho chữ, 3:1 cho viền và focus) ở bất kỳ theme nào.
+- **Storybook**: `pnpm storybook` → http://localhost:6006. Có trang Giới thiệu (lý do chọn màu theo ngũ hành, 10 nguyên tắc màu), Foundations (màu, chữ, khoảng cách đọc từ `tokens.json`), từng component và mẫu bảng dữ liệu. Addon Accessibility kiểm tra mọi story; thanh công cụ đổi theme và ngôn ngữ.
+
+Quy tắc dùng màu khi thêm màn hình mới:
+- Mỗi vùng chỉ một nút `type="primary"` (nền `ochre`, chữ nâu `on-ochre` — không bao giờ chữ trắng trên `ochre`).
+- Trạng thái dữ liệu dùng `<StatusTag>`: tone cố định theo trạng thái, luôn có hình + chữ. Không tô màu số tiền.
+- Thẻ chỉ số dùng `<StatCard>`, chỉ một thẻ `accent` mỗi màn hình.
+
 ## Cấu trúc thư mục
 
 ```
@@ -72,7 +87,11 @@ pnpm dev
 │   │   ├── types/          Kiểu dữ liệu khớp với DTO của API
 │   │   └── utils/          Hàm thuần: chuẩn hóa lỗi, tính điểm xem trước...
 │   ├── i18n/locales/       vi.json, en.json
-│   └── test/               unit/ (hàm thuần), nuxt/ (cần môi trường Nuxt)
+│   ├── design-system/      tokens.json — nguồn token của design system Hoàng Thổ
+│   ├── stories/            Storybook: Giới thiệu, Foundations, Components, Patterns
+│   ├── .storybook/         cấu hình Storybook (tái tạo auto-import của Nuxt)
+│   ├── scripts/            build-tokens.mjs sinh tokens.css
+│   └── test/               unit/ (hàm thuần, token), nuxt/ (cần môi trường Nuxt)
 ├── docker-compose.yml
 └── .github/workflows/ci.yml
 ```
@@ -124,6 +143,8 @@ Frontend dịch lỗi bằng `useApiErrors()`: `errors.<code>` cho lỗi nghiệ
 | Test frontend | `cd frontend && pnpm test` |
 | Kiểm tra kiểu / lint frontend | `pnpm typecheck` / `pnpm lint` |
 | Build frontend (file tĩnh) | `pnpm build` → `.output/public` |
+| Storybook | `pnpm storybook` (dev) / `pnpm build-storybook` |
+| Sinh lại CSS token | `pnpm tokens` |
 
 ## Cấu hình khi triển khai
 
