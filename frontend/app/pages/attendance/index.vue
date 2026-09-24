@@ -119,7 +119,7 @@ async function save() {
         </div>
       </template>
       <ElTable :data="rows" :empty-text="t('common.noData')">
-        <ElTableColumn type="index" width="60" />
+        <ElTableColumn type="index" label="#" width="60" />
         <ElTableColumn prop="studentCode" :label="t('fields.code')" width="130" />
         <ElTableColumn :label="t('fields.fullName')" min-width="200">
           <template #default="{ row }">
@@ -129,7 +129,7 @@ async function save() {
         </ElTableColumn>
         <ElTableColumn :label="t('fields.isPresent')" width="200">
           <template #default="{ row }">
-            <ElRadioGroup v-model="row.isPresent" size="small">
+            <ElRadioGroup v-model="row.isPresent" :aria-label="`${row.studentName} · ${t('fields.isPresent')}`" size="small">
               <ElRadioButton :value="true">{{ t('attendance.present') }}</ElRadioButton>
               <ElRadioButton :value="false">{{ t('attendance.absent') }}</ElRadioButton>
             </ElRadioGroup>
@@ -137,7 +137,7 @@ async function save() {
         </ElTableColumn>
         <ElTableColumn :label="t('fields.note')" min-width="220">
           <template #default="{ row }">
-            <ElInput v-model="row.note" maxlength="250" size="small" />
+            <ElInput v-model="row.note" :aria-label="`${row.studentName} · ${t('fields.note')}`" maxlength="250" size="small" />
           </template>
         </ElTableColumn>
       </ElTable>

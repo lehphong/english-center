@@ -7,6 +7,12 @@
  */
 html:root,
 html.dark {
+  /*
+   * "Trắng" của Element Plus là màu của dấu trên nền màu: dấu tick, chấm radio, núm switch, chữ trên tag/badge đặc.
+   * Ở theme tối các nền màu sáng lên, nên dấu phải tối theo → dùng `surface`. Cặp surface với ochre-ink,
+   * success, warning, danger, info đã được test tương phản kiểm tra ở cả hai theme.
+   */
+  --el-color-white: var(--surface);
   --el-font-family: var(--font-sans);
   --el-font-size-base: 14px;
 
@@ -87,7 +93,8 @@ html.dark {
   --el-box-shadow-light: var(--shadow-overlay);
   --el-box-shadow-lighter: var(--shadow-raised);
   --el-box-shadow-dark: var(--shadow-overlay);
-  --el-mask-color: rgba(23, 18, 13, 0.55);
+  /* mask-color là lớp phủ khi đang tải (v-loading); overlay-color là nền mờ sau dialog */
+  --el-mask-color: color-mix(in srgb, var(--surface) 85%, transparent);
   --el-overlay-color-lighter: rgba(23, 18, 13, 0.5);
 }
 
@@ -122,10 +129,22 @@ html .el-button--primary.is-plain {
   --el-button-hover-border-color: var(--ochre-ink);
 }
 
-html .el-button--danger:not(.is-link):not(.is-text) {
+/*
+ * Nút danger đặc: nền `danger`, chữ `on-danger`. Selector có thêm `.el-button` để thắng `.el-button--primary`,
+ * vì nút xác nhận của ElMessageBox mang cả hai class (confirmButtonClass: 'el-button--danger').
+ * Nút danger plain/link/text giữ chữ `danger` trên nền nhạt.
+ */
+html .el-button.el-button--danger:not(.is-link):not(.is-text):not(.is-plain) {
+  --el-button-bg-color: var(--danger);
+  --el-button-border-color: var(--danger);
   --el-button-text-color: var(--on-danger);
+  --el-button-hover-bg-color: color-mix(in srgb, var(--danger) 88%, var(--ink));
+  --el-button-hover-border-color: color-mix(in srgb, var(--danger) 88%, var(--ink));
   --el-button-hover-text-color: var(--on-danger);
+  --el-button-active-bg-color: color-mix(in srgb, var(--danger) 88%, var(--ink));
+  --el-button-active-border-color: color-mix(in srgb, var(--danger) 88%, var(--ink));
   --el-button-active-text-color: var(--on-danger);
+  font-weight: 600;
 }
 
 /* Đặt qua biến của Element Plus: selector trạng thái chọn của nó (2.14+) có độ ưu tiên rất cao */
@@ -141,6 +160,15 @@ html .el-progress-bar__inner {
 
 html .el-progress.is-exception .el-progress-bar__inner {
   background-color: var(--danger);
+}
+
+/* Chữ trong thanh: nền ochre → `on-ochre`; nền trạng thái (success, warning, danger) → `surface` */
+html .el-progress-bar__innerText {
+  color: var(--on-ochre);
+}
+
+html .el-progress:is(.is-success, .is-warning, .is-exception) .el-progress-bar__innerText {
+  color: var(--surface);
 }
 
 html .el-progress__text {
@@ -194,4 +222,68 @@ html .el-dialog__title {
 
 html .el-message {
   --el-message-border-radius: var(--radius-md);
+}
+
+/* Thông báo loại "info" mang nghĩa thông tin → xanh `info` (nguyên tắc 6), khác tag "info" là trung tính */
+html .el-alert--info,
+html .el-message--info,
+html .el-notification__icon,
+html .el-message-box__status {
+  --el-color-info: var(--info);
+  --el-color-info-light-8: var(--info-soft);
+  --el-color-info-light-9: var(--info-soft);
+}
+
+html .el-segmented {
+  --el-segmented-item-selected-bg-color: var(--ochre);
+  --el-segmented-item-selected-color: var(--on-ochre);
+}
+
+html .el-tabs__item {
+  font-weight: 500;
+}
+
+html .el-descriptions {
+  --el-descriptions-item-bordered-label-background: var(--surface-sunken);
+}
+
+html .el-descriptions__label.is-bordered-label {
+  color: var(--ink-muted);
+  font-weight: 500;
+}
+
+html .el-drawer {
+  --el-drawer-bg-color: var(--surface);
+}
+
+html .el-drawer__title {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* Mục nguy hiểm trong dropdown (xóa, hủy): chữ `danger`, nền `danger-soft` khi rê chuột */
+html .el-dropdown-menu__item.is-danger:not(.is-disabled) {
+  color: var(--danger);
+}
+
+html .el-dropdown-menu__item.is-danger:not(.is-disabled):hover,
+html .el-dropdown-menu__item.is-danger:not(.is-disabled):focus {
+  color: var(--danger);
+  background-color: var(--danger-soft);
+}
+
+/* Chữ cái đầu trên avatar: `surface` trên `ink-muted` (cặp đã được test tương phản) */
+html .el-avatar {
+  --el-avatar-bg-color: var(--ink-muted);
+}
+
+html .el-link.is-disabled {
+  --el-link-disabled-text-color: var(--ink-subtle);
+}
+
+/* Lịch và bộ lọc bảng: Element Plus viết cứng #fff cho ngày đang chọn → `surface`, đọc được trên ochre-ink ở cả hai theme */
+html :is(.el-date-table, .el-month-table, .el-quarter-table, .el-year-table) td:is(.current, .selected, .start-date, .end-date):not(.disabled) .el-date-table-cell__text,
+html :is(.el-date-table, .el-month-table, .el-quarter-table, .el-year-table) td:is(.start-date, .end-date) .el-date-table-cell,
+html .el-table-filter__list-item.is-active {
+  color: var(--surface);
 }

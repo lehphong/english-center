@@ -101,6 +101,7 @@ async function save() {
           <template #default="{ row }">
             <ElInputNumber
               v-model="row[skill]"
+              :aria-label="`${row.studentName} · ${t(`fields.${skill}`)}`"
               :min="ranges[skill]!.min"
               :max="ranges[skill]!.max"
               :step="ranges[skill]!.step"
@@ -119,7 +120,7 @@ async function save() {
         </ElTableColumn>
         <ElTableColumn :label="t('fields.feedback')" min-width="220">
           <template #default="{ row }">
-            <ElInput v-model="row.feedback" maxlength="500" size="small" />
+            <ElInput v-model="row.feedback" :aria-label="`${row.studentName} · ${t('fields.feedback')}`" maxlength="500" size="small" />
           </template>
         </ElTableColumn>
       </ElTable>
