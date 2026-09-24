@@ -19,7 +19,8 @@
     "myClasses": "Lớp của tôi",
     "myAttendance": "Chuyên cần",
     "myGrades": "Kết quả học tập",
-    "myProfile": "Hồ sơ"
+    "myProfile": "Hồ sơ",
+    "main": "Điều hướng chính"
   },
   "common": {
     "search": "Tìm kiếm",
@@ -55,7 +56,8 @@
     "resetPassword": "Đặt lại mật khẩu",
     "uploadHint": "JPG, PNG hoặc WEBP, tối đa 2MB",
     "darkMode": "Giao diện tối",
-    "lightMode": "Giao diện sáng"
+    "lightMode": "Giao diện sáng",
+    "pageSize": "Số dòng mỗi trang"
   },
   "auth": {
     "title": "Đăng nhập",
@@ -134,7 +136,8 @@
     "activeEnrollments": "Lượt ghi danh",
     "collected": "Học phí đã thu",
     "outstanding": "Học phí còn nợ",
-    "occupancy": "Sĩ số các lớp đang học"
+    "occupancy": "Sĩ số các lớp đang học",
+    "occupancyOf": "Sĩ số lớp {code}"
   },
   "courses": {
     "title": "Quản lý khóa học",

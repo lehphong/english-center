@@ -72,10 +72,10 @@ async function save() {
 
     <ElCard shadow="never">
       <div class="toolbar">
-        <ElSelect v-model="classId" :placeholder="t('fields.class')" filterable style="width: 280px" @change="loadSheet">
+        <ElSelect v-model="classId" :placeholder="t('fields.class')" :aria-label="t('fields.class')" filterable style="width: 280px" @change="loadSheet">
           <ElOption v-for="c in classes" :key="c.id" :value="c.id" :label="c.label" />
         </ElSelect>
-        <ElSelect v-model="examType" @change="loadSheet">
+        <ElSelect v-model="examType" :aria-label="t('fields.examType')" @change="loadSheet">
           <ElOption v-for="o in options('examType')" :key="o.value" :value="o.value" :label="o.label" />
         </ElSelect>
       </div>

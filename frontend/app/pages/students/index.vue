@@ -47,11 +47,11 @@ async function remove(student: Student) {
 
     <ElCard shadow="never">
       <div class="toolbar">
-        <ElInput v-model="query.search" :placeholder="t('common.searchPlaceholder')" :prefix-icon="Search" clearable @keyup.enter="search" @clear="search" />
-        <ElSelect v-model="query.entryLevel" :placeholder="t('fields.entryLevel')" clearable @change="search">
+        <ElInput v-model="query.search" :placeholder="t('common.searchPlaceholder')" :aria-label="t('common.searchPlaceholder')" :prefix-icon="Search" clearable @keyup.enter="search" @clear="search" />
+        <ElSelect v-model="query.entryLevel" :placeholder="t('fields.entryLevel')" :aria-label="t('fields.entryLevel')" clearable @change="search">
           <ElOption v-for="o in options('englishLevel')" :key="o.value" :value="o.value" :label="o.label" />
         </ElSelect>
-        <ElSelect v-model="query.hasAccount" :placeholder="t('fields.account')" clearable @change="search">
+        <ElSelect v-model="query.hasAccount" :placeholder="t('fields.account')" :aria-label="t('fields.account')" clearable @change="search">
           <ElOption :value="true" :label="t('students.hasAccount')" />
           <ElOption :value="false" :label="t('students.noAccount')" />
         </ElSelect>
@@ -60,6 +60,7 @@ async function remove(student: Student) {
 
       <ElTable v-loading="loading" :data="items" :empty-text="t('common.noData')" style="margin-top: 16px">
         <ElTableColumn width="64">
+          <template #header><span class="visually-hidden">{{ t('fields.avatar') }}</span></template>
           <template #default="{ row }">
             <ElAvatar :src="row.avatarUrl ?? undefined" :size="36">{{ row.fullName.charAt(0) }}</ElAvatar>
           </template>
@@ -97,14 +98,7 @@ async function remove(student: Student) {
         </ElTableColumn>
       </ElTable>
 
-      <ElPagination
-        v-model:current-page="query.page"
-        v-model:page-size="query.pageSize"
-        class="pagination"
-        layout="total, sizes, prev, pager, next"
-        :total="total"
-        @change="load"
-      />
+      <ListPagination v-model:page="query.page" v-model:page-size="query.pageSize" :total="total" @change="load" />
     </ElCard>
 
     <StudentFormDialog v-model="dialogVisible" :student="editing" @saved="load" />

@@ -65,11 +65,11 @@ async function remove(course: Course) {
 
     <ElCard shadow="never">
       <div class="toolbar">
-        <ElInput v-model="query.search" :placeholder="t('common.searchPlaceholder')" :prefix-icon="Search" clearable @keyup.enter="search" @clear="search" />
-        <ElSelect v-model="query.gradingScheme" :placeholder="t('fields.gradingScheme')" clearable @change="search">
+        <ElInput v-model="query.search" :placeholder="t('common.searchPlaceholder')" :aria-label="t('common.searchPlaceholder')" :prefix-icon="Search" clearable @keyup.enter="search" @clear="search" />
+        <ElSelect v-model="query.gradingScheme" :placeholder="t('fields.gradingScheme')" :aria-label="t('fields.gradingScheme')" clearable @change="search">
           <ElOption v-for="o in options('gradingScheme')" :key="o.value" :value="o.value" :label="o.label" />
         </ElSelect>
-        <ElSelect v-model="query.isActive" :placeholder="t('fields.isActive')" clearable @change="search">
+        <ElSelect v-model="query.isActive" :placeholder="t('fields.isActive')" :aria-label="t('fields.isActive')" clearable @change="search">
           <ElOption :value="true" :label="t('common.active')" />
           <ElOption :value="false" :label="t('common.inactive')" />
         </ElSelect>
@@ -78,6 +78,7 @@ async function remove(course: Course) {
 
       <ElTable v-loading="loading" :data="items" :empty-text="t('common.noData')" style="margin-top: 16px">
         <ElTableColumn width="96">
+          <template #header><span class="visually-hidden">{{ t('fields.thumbnail') }}</span></template>
           <template #default="{ row }">
             <ElImage v-if="row.thumbnailUrl" :src="row.thumbnailUrl" fit="cover" class="thumb" />
             <div v-else class="thumb placeholder" />
@@ -97,12 +98,12 @@ async function remove(course: Course) {
         </ElTableColumn>
         <ElTableColumn prop="totalSessions" :label="t('fields.totalSessions')" width="150" align="center" />
         <ElTableColumn prop="classCount" :label="t('fields.classCount')" width="110" align="center" />
-        <ElTableColumn :label="t('fields.isActive')" width="140">
+        <ElTableColumn :label="t('fields.isActive')" width="160">
           <template #default="{ row }">
             <StatusTag :tone="row.isActive ? 'success' : 'neutral'" :label="row.isActive ? t('common.active') : t('common.inactive')" />
           </template>
         </ElTableColumn>
-        <ElTableColumn :label="t('common.actions')" width="230" fixed="right">
+        <ElTableColumn :label="t('common.actions')" width="260" fixed="right">
           <template #default="{ row }">
             <div class="row-actions">
               <ImageUploadButton hide-hint :title="t('common.uploadHint')" :loading="uploadingId === row.id" @select="(file) => uploadThumbnail(row as Course, file)" />
@@ -113,14 +114,7 @@ async function remove(course: Course) {
         </ElTableColumn>
       </ElTable>
 
-      <ElPagination
-        v-model:current-page="query.page"
-        v-model:page-size="query.pageSize"
-        class="pagination"
-        layout="total, sizes, prev, pager, next"
-        :total="total"
-        @change="load"
-      />
+      <ListPagination v-model:page="query.page" v-model:page-size="query.pageSize" :total="total" @change="load" />
     </ElCard>
 
     <CourseFormDialog v-model="dialogVisible" :course="editing" @saved="load" />

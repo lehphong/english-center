@@ -19,7 +19,8 @@
     "myClasses": "My classes",
     "myAttendance": "My attendance",
     "myGrades": "My grades",
-    "myProfile": "My profile"
+    "myProfile": "My profile",
+    "main": "Main navigation"
   },
   "common": {
     "search": "Search",
@@ -55,7 +56,8 @@
     "resetPassword": "Reset password",
     "uploadHint": "JPG, PNG or WEBP, up to 2MB",
     "darkMode": "Dark mode",
-    "lightMode": "Light mode"
+    "lightMode": "Light mode",
+    "pageSize": "Rows per page"
   },
   "auth": {
     "title": "Sign in",
@@ -134,7 +136,8 @@
     "activeEnrollments": "Active enrollments",
     "collected": "Tuition collected",
     "outstanding": "Outstanding tuition",
-    "occupancy": "Running class occupancy"
+    "occupancy": "Running class occupancy",
+    "occupancyOf": "Enrollment in {code}"
   },
   "courses": {
     "title": "Course management",

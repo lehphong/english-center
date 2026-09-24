@@ -56,7 +56,7 @@ onMounted(load)
         <NuxtLink :to="`/grades?classId=${id}`"><ElButton>{{ t('nav.grades') }}</ElButton></NuxtLink>
       </div>
       <ElTable :data="students" :empty-text="t('common.noData')">
-        <ElTableColumn type="index" width="60" />
+        <ElTableColumn type="index" label="#" width="60" />
         <ElTableColumn :label="t('fields.code')" width="130">
           <template #default="{ row }">
             <NuxtLink :to="`/students/${row.studentId}`">{{ row.studentCode }}</NuxtLink>

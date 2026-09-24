@@ -54,11 +54,11 @@ async function remove(user: User) {
 
     <ElCard shadow="never">
       <div class="toolbar">
-        <ElInput v-model="query.search" :placeholder="t('common.searchPlaceholder')" :prefix-icon="Search" clearable @keyup.enter="search" @clear="search" />
-        <ElSelect v-model="query.role" :placeholder="t('fields.role')" clearable @change="search">
+        <ElInput v-model="query.search" :placeholder="t('common.searchPlaceholder')" :aria-label="t('common.searchPlaceholder')" :prefix-icon="Search" clearable @keyup.enter="search" @clear="search" />
+        <ElSelect v-model="query.role" :placeholder="t('fields.role')" :aria-label="t('fields.role')" clearable @change="search">
           <ElOption v-for="o in options('role')" :key="o.value" :value="o.value" :label="o.label" />
         </ElSelect>
-        <ElSelect v-model="query.isActive" :placeholder="t('fields.isActive')" clearable @change="search">
+        <ElSelect v-model="query.isActive" :placeholder="t('fields.isActive')" :aria-label="t('fields.isActive')" clearable @change="search">
           <ElOption :value="true" :label="t('common.active')" />
           <ElOption :value="false" :label="t('common.locked')" />
         </ElSelect>
@@ -77,7 +77,7 @@ async function remove(user: User) {
             <span v-else class="muted">—</span>
           </template>
         </ElTableColumn>
-        <ElTableColumn :label="t('fields.isActive')" width="140">
+        <ElTableColumn :label="t('fields.isActive')" width="160">
           <template #default="{ row }">
             <StatusTag :tone="row.isActive ? 'success' : 'neutral'" :label="row.isActive ? t('common.active') : t('common.locked')" />
           </template>
@@ -94,14 +94,7 @@ async function remove(user: User) {
         </ElTableColumn>
       </ElTable>
 
-      <ElPagination
-        v-model:current-page="query.page"
-        v-model:page-size="query.pageSize"
-        class="pagination"
-        layout="total, sizes, prev, pager, next"
-        :total="total"
-        @change="load"
-      />
+      <ListPagination v-model:page="query.page" v-model:page-size="query.pageSize" :total="total" @change="load" />
     </ElCard>
 
     <UserFormDialog v-model="formVisible" :user="selected" @saved="load" />

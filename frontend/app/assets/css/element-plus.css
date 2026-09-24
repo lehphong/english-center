@@ -56,7 +56,7 @@ html.dark {
   --el-text-color-primary: var(--ink);
   --el-text-color-regular: var(--ink);
   --el-text-color-secondary: var(--ink-muted);
-  --el-text-color-placeholder: var(--ink-subtle);
+  --el-text-color-placeholder: var(--ink-muted);
   --el-text-color-disabled: var(--ink-subtle);
 
   --el-bg-color: var(--surface);
@@ -128,11 +128,11 @@ html .el-button--danger:not(.is-link):not(.is-text) {
   --el-button-active-text-color: var(--on-danger);
 }
 
-html .el-radio-button__original-radio:checked + .el-radio-button__inner {
-  background-color: var(--ochre);
-  border-color: var(--ochre);
-  box-shadow: -1px 0 0 0 var(--ochre);
-  color: var(--on-ochre);
+/* Đặt qua biến của Element Plus: selector trạng thái chọn của nó (2.14+) có độ ưu tiên rất cao */
+html .el-radio-button {
+  --el-radio-button-checked-bg-color: var(--ochre);
+  --el-radio-button-checked-border-color: var(--ochre);
+  --el-radio-button-checked-text-color: var(--on-ochre);
 }
 
 html .el-progress-bar__inner {

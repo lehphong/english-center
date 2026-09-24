@@ -89,11 +89,12 @@ async function save() {
 
     <ElCard shadow="never">
       <div class="toolbar">
-        <ElSelect v-model="classId" :placeholder="t('fields.class')" filterable style="width: 280px" @change="loadSheet">
+        <ElSelect v-model="classId" :placeholder="t('fields.class')" :aria-label="t('fields.class')" filterable style="width: 280px" @change="loadSheet">
           <ElOption v-for="c in classes" :key="c.id" :value="c.id" :label="c.label" />
         </ElSelect>
         <ElInputNumber
           v-model="sessionNumber"
+          :aria-label="t('fields.sessionNumber')"
           :min="1"
           :max="sheet?.totalSessions ?? 200"
           controls-position="right"
@@ -101,7 +102,7 @@ async function save() {
         >
           <template #prefix>{{ t('fields.sessionNumber') }}</template>
         </ElInputNumber>
-        <ElDatePicker v-model="sessionDate" type="date" value-format="YYYY-MM-DD" :clearable="false" />
+        <ElDatePicker v-model="sessionDate" :aria-label="t('fields.sessionDate')" type="date" value-format="YYYY-MM-DD" :clearable="false" />
         <span v-if="sheet" class="muted">/ {{ sheet.totalSessions }}</span>
       </div>
     </ElCard>

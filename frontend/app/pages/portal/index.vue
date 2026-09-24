@@ -53,7 +53,7 @@ const attendanceRate = (c: MyClass) => (c.sessionsRecorded ? Math.round((c.sessi
           </ElDescriptions>
           <div class="attendance">
             <span class="muted">{{ t('portal.sessions', { attended: c.sessionsAttended, recorded: c.sessionsRecorded }) }}</span>
-            <ElProgress :percentage="attendanceRate(c)" :status="attendanceRate(c) < 80 && c.sessionsRecorded ? 'warning' : 'success'" />
+            <ElProgress :aria-label="t('fields.attendanceRate')" :percentage="attendanceRate(c)" :status="attendanceRate(c) < 80 && c.sessionsRecorded ? 'warning' : 'success'" />
           </div>
         </ElCard>
       </ElCol>

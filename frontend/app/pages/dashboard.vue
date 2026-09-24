@@ -54,6 +54,7 @@ const stats = computed(() =>
         <ElTableColumn :label="t('fields.enrolled')" width="320">
           <template #default="{ row }">
             <ElProgress
+              :aria-label="t('dashboard.occupancyOf', { code: row.classCode })"
               :percentage="Math.round((row.enrolled / row.maxCapacity) * 100)"
               :format="() => `${row.enrolled}/${row.maxCapacity}`"
               :status="row.enrolled >= row.maxCapacity ? 'exception' : undefined"

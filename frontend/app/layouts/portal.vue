@@ -95,6 +95,10 @@ const items = computed(() => [
   gap: var(--space-3);
 }
 
+.header-actions :deep(.user) {
+  color: var(--on-umber);
+}
+
 .header-actions :deep(.muted) {
   color: var(--on-umber-muted);
 }

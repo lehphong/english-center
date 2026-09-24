@@ -35,13 +35,13 @@ onMounted(async () => {
             <div class="muted">{{ row.classCode }} · {{ label('gradingScheme', row.gradingScheme) }}</div>
           </template>
         </ElTableColumn>
-        <ElTableColumn :label="t('fields.examType')" width="160">
+        <ElTableColumn :label="t('fields.examType')" min-width="140">
           <template #default="{ row }">{{ label('examType', row.examType) }}</template>
         </ElTableColumn>
-        <ElTableColumn v-for="skill in ['listening', 'reading', 'writing', 'speaking']" :key="skill" :label="t(`fields.${skill}`)" width="110" align="center">
+        <ElTableColumn v-for="skill in ['listening', 'reading', 'writing', 'speaking']" :key="skill" :label="t(`fields.${skill}`)" min-width="96" align="center">
           <template #default="{ row }">{{ score(row[skill]) }}</template>
         </ElTableColumn>
-        <ElTableColumn :label="t('fields.overall')" width="90" align="center">
+        <ElTableColumn :label="t('fields.overall')" min-width="90" align="center">
           <template #default="{ row }"><strong>{{ score(row.overall) }}</strong></template>
         </ElTableColumn>
         <ElTableColumn prop="feedback" :label="t('fields.feedback')" min-width="200" />

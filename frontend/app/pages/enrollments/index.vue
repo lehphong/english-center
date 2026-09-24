@@ -54,14 +54,14 @@ async function remove(enrollment: Enrollment) {
 
     <ElCard shadow="never">
       <div class="toolbar">
-        <ElInput v-model="query.search" :placeholder="t('common.searchPlaceholder')" :prefix-icon="Search" clearable @keyup.enter="search" @clear="search" />
-        <ElSelect v-model="query.classId" :placeholder="t('fields.class')" clearable filterable @change="search">
+        <ElInput v-model="query.search" :placeholder="t('common.searchPlaceholder')" :aria-label="t('common.searchPlaceholder')" :prefix-icon="Search" clearable @keyup.enter="search" @clear="search" />
+        <ElSelect v-model="query.classId" :placeholder="t('fields.class')" :aria-label="t('fields.class')" clearable filterable @change="search">
           <ElOption v-for="c in classes" :key="c.id" :value="c.id" :label="c.label" />
         </ElSelect>
-        <ElSelect v-model="query.paymentStatus" :placeholder="t('fields.paymentStatus')" clearable @change="search">
+        <ElSelect v-model="query.paymentStatus" :placeholder="t('fields.paymentStatus')" :aria-label="t('fields.paymentStatus')" clearable @change="search">
           <ElOption v-for="o in options('paymentStatus')" :key="o.value" :value="o.value" :label="o.label" />
         </ElSelect>
-        <ElSelect v-model="query.learningStatus" :placeholder="t('fields.learningStatus')" clearable @change="search">
+        <ElSelect v-model="query.learningStatus" :placeholder="t('fields.learningStatus')" :aria-label="t('fields.learningStatus')" clearable @change="search">
           <ElOption v-for="o in options('learningStatus')" :key="o.value" :value="o.value" :label="o.label" />
         </ElSelect>
       </div>
@@ -104,14 +104,7 @@ async function remove(enrollment: Enrollment) {
         </ElTableColumn>
       </ElTable>
 
-      <ElPagination
-        v-model:current-page="query.page"
-        v-model:page-size="query.pageSize"
-        class="pagination"
-        layout="total, sizes, prev, pager, next"
-        :total="total"
-        @change="load"
-      />
+      <ListPagination v-model:page="query.page" v-model:page-size="query.pageSize" :total="total" @change="load" />
     </ElCard>
 
     <EnrollmentFormDialog v-model="dialogVisible" :enrollment="editing" @saved="load" />

@@ -37,7 +37,7 @@ onMounted(async () => {
     <PageHeader :title="t('nav.myAttendance')" />
     <ElCard shadow="never">
       <div class="toolbar">
-        <ElSelect v-model="enrollmentId" :placeholder="t('fields.class')" clearable @change="load">
+        <ElSelect v-model="enrollmentId" :placeholder="t('fields.class')" :aria-label="t('fields.class')" clearable @change="load">
           <ElOption v-for="c in classes" :key="c.enrollmentId" :value="c.enrollmentId" :label="`${c.classCode} · ${c.courseName}`" />
         </ElSelect>
       </div>

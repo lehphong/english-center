@@ -50,8 +50,8 @@ async function remove(courseClass: CourseClass) {
 
     <ElCard shadow="never">
       <div class="toolbar">
-        <ElInput v-model="query.search" :placeholder="t('common.searchPlaceholder')" :prefix-icon="Search" clearable @keyup.enter="search" @clear="search" />
-        <ElSelect v-model="query.courseId" :placeholder="t('fields.course')" clearable filterable @change="search">
+        <ElInput v-model="query.search" :placeholder="t('common.searchPlaceholder')" :aria-label="t('common.searchPlaceholder')" :prefix-icon="Search" clearable @keyup.enter="search" @clear="search" />
+        <ElSelect v-model="query.courseId" :placeholder="t('fields.course')" :aria-label="t('fields.course')" clearable filterable @change="search">
           <ElOption v-for="c in courses" :key="c.id" :value="c.id" :label="c.label" />
         </ElSelect>
         <ElButton type="primary" plain @click="search">{{ t('common.search') }}</ElButton>
@@ -94,14 +94,7 @@ async function remove(courseClass: CourseClass) {
         </ElTableColumn>
       </ElTable>
 
-      <ElPagination
-        v-model:current-page="query.page"
-        v-model:page-size="query.pageSize"
-        class="pagination"
-        layout="total, sizes, prev, pager, next"
-        :total="total"
-        @change="load"
-      />
+      <ListPagination v-model:page="query.page" v-model:page-size="query.pageSize" :total="total" @change="load" />
     </ElCard>
 
     <ClassFormDialog v-model="dialogVisible" :course-class="editing" @saved="load" />

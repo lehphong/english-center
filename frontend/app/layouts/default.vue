@@ -61,16 +61,27 @@ const activeMenu = computed(() => {
         <BrandMark />
         <span>{{ t('app.name') }}</span>
       </NuxtLink>
-      <ElMenu :default-active="activeMenu" class="menu" @select="(index: string) => navigateTo(index)">
+      <!-- Điều hướng là các liên kết thật (mở tab mới được), không dùng role="menu" của ElMenu -->
+      <nav class="nav" :aria-label="t('nav.main')">
         <template v-for="(group, index) in groups" :key="index">
-          <ElMenuItemGroup v-if="group.items.length" :title="group.title">
-            <ElMenuItem v-for="item in group.items" :key="item.to" :index="item.to">
-              <ElIcon><component :is="item.icon" /></ElIcon>
-              <span>{{ item.label }}</span>
-            </ElMenuItem>
-          </ElMenuItemGroup>
+          <div v-if="group.items.length" class="nav-group">
+            <p v-if="group.title" class="nav-title">{{ group.title }}</p>
+            <ul>
+              <li v-for="item in group.items" :key="item.to">
+                <NuxtLink
+                  :to="item.to"
+                  class="nav-item"
+                  :class="{ 'is-active': item.to === activeMenu }"
+                  :aria-current="item.to === activeMenu ? 'page' : undefined"
+                >
+                  <ElIcon><component :is="item.icon" /></ElIcon>
+                  <span>{{ item.label }}</span>
+                </NuxtLink>
+              </li>
+            </ul>
+          </div>
         </template>
-      </ElMenu>
+      </nav>
     </ElAside>
     <ElContainer>
       <ElHeader class="header">
@@ -116,20 +127,15 @@ const activeMenu = computed(() => {
   text-decoration: none;
 }
 
-.menu {
-  --el-menu-bg-color: var(--umber);
-  --el-menu-text-color: var(--on-umber-muted);
-  --el-menu-hover-text-color: var(--on-umber);
-  --el-menu-hover-bg-color: var(--umber-soft);
-  --el-menu-active-color: var(--on-umber);
-  --el-menu-item-height: 40px;
-  --el-menu-item-font-size: 14px;
-  --el-menu-base-level-padding: 12px;
-  border-right: none;
+.nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-.menu :deep(.el-menu-item-group__title) {
-  padding: var(--space-4) var(--space-3) var(--space-1) !important;
+.nav-title {
+  margin: 0;
+  padding: var(--space-4) var(--space-3) var(--space-1);
   font-size: 11px;
   font-weight: 600;
   line-height: 16px;
@@ -138,19 +144,44 @@ const activeMenu = computed(() => {
   color: var(--on-umber-muted);
 }
 
-.menu :deep(.el-menu-item) {
+.nav-item {
   position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  height: 40px;
   margin-bottom: 2px;
+  padding: 0 var(--space-3);
   border-radius: var(--radius-sm);
+  font-size: 14px;
   font-weight: 500;
+  color: var(--on-umber-muted);
+  text-decoration: none;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.nav-item:hover {
+  color: var(--on-umber);
+  background: var(--umber-soft);
+  text-decoration: none;
+}
+
+.nav-item:focus-visible {
+  outline: 2px solid var(--ochre);
+  outline-offset: -2px;
+}
+
+.nav-item .el-icon {
+  font-size: 18px;
 }
 
 /* Mục đang chọn: nền umber-soft + vạch Hoàng Thổ — dấu ochre duy nhất trong sidebar */
-.menu :deep(.el-menu-item.is-active) {
+.nav-item.is-active {
+  color: var(--on-umber);
   background: var(--umber-soft);
 }
 
-.menu :deep(.el-menu-item.is-active)::before {
+.nav-item.is-active::before {
   content: '';
   position: absolute;
   left: 0;

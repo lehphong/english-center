@@ -41,12 +41,12 @@ async function remove(record: AttendanceRecord) {
     <PageHeader :title="t('attendance.historyTitle')" />
     <ElCard shadow="never">
       <div class="toolbar">
-        <ElInput v-model="query.search" :placeholder="t('common.searchPlaceholder')" :prefix-icon="Search" clearable @keyup.enter="search" @clear="search" />
-        <ElSelect v-model="query.classId" :placeholder="t('fields.class')" clearable filterable @change="search">
+        <ElInput v-model="query.search" :placeholder="t('common.searchPlaceholder')" :aria-label="t('common.searchPlaceholder')" :prefix-icon="Search" clearable @keyup.enter="search" @clear="search" />
+        <ElSelect v-model="query.classId" :placeholder="t('fields.class')" :aria-label="t('fields.class')" clearable filterable @change="search">
           <ElOption v-for="c in classes" :key="c.id" :value="c.id" :label="c.label" />
         </ElSelect>
-        <ElInputNumber v-model="query.sessionNumber" :min="1" :placeholder="t('fields.sessionNumber')" controls-position="right" @change="search" />
-        <ElSelect v-model="query.isPresent" :placeholder="t('fields.isPresent')" clearable @change="search">
+        <ElInputNumber v-model="query.sessionNumber" :min="1" :placeholder="t('fields.sessionNumber')" :aria-label="t('fields.sessionNumber')" controls-position="right" @change="search" />
+        <ElSelect v-model="query.isPresent" :placeholder="t('fields.isPresent')" :aria-label="t('fields.isPresent')" clearable @change="search">
           <ElOption :value="true" :label="t('attendance.present')" />
           <ElOption :value="false" :label="t('attendance.absent')" />
         </ElSelect>
@@ -77,14 +77,7 @@ async function remove(record: AttendanceRecord) {
         </ElTableColumn>
       </ElTable>
 
-      <ElPagination
-        v-model:current-page="query.page"
-        v-model:page-size="query.pageSize"
-        class="pagination"
-        layout="total, sizes, prev, pager, next"
-        :total="total"
-        @change="load"
-      />
+      <ListPagination v-model:page="query.page" v-model:page-size="query.pageSize" :total="total" @change="load" />
     </ElCard>
   </div>
 </template>

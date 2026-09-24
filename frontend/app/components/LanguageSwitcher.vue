@@ -1,10 +1,11 @@
 <script setup lang="ts">
-const { locale, locales, setLocale } = useI18n()
+const { t, locale, locales, setLocale } = useI18n()
 </script>
 
 <template>
   <ElSelect
     :model-value="locale"
+    :aria-label="t('common.language')"
     size="small"
     style="width: 120px"
     @update:model-value="(code: 'vi' | 'en') => setLocale(code)"
