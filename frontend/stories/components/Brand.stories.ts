@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import BrandMark from '~/components/BrandMark.vue'
 
-/** Dấu nhận diện: ba bậc ruộng bậc thang màu Hoàng Thổ, dùng cạnh tên "English Center". */
+/** The brand mark: three rice-terrace steps in golden ochre, set beside the "English Center" name. */
 const meta = {
   title: 'Components/BrandMark',
   component: BrandMark,

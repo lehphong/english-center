@@ -9,24 +9,24 @@ interface ColorToken {
 
 const byName = Object.fromEntries((tokens.color.tokens as ColorToken[]).map((t) => [t.name, t]))
 
-// Nhóm theo vai trò trong quy tắc 60 – 30 – 10
+// Grouped by role in the 60 – 30 – 10 rule
 const groups = [
-  { title: 'Nền — 60%', names: ['ground', 'surface', 'surface-sunken', 'line', 'line-strong'] },
-  { title: 'Cấu trúc — 30% (Nâu Đất và chữ)', names: ['umber', 'umber-soft', 'on-umber', 'on-umber-muted', 'ink', 'ink-muted', 'ink-subtle'] },
-  { title: 'Nhấn — 10% (Hoàng Thổ)', names: ['ochre', 'ochre-hover', 'ochre-soft', 'ochre-ink', 'on-ochre', 'focus-ring'] },
+  { title: 'Ground — 60%', names: ['ground', 'surface', 'surface-sunken', 'line', 'line-strong'] },
+  { title: 'Structure — 30% (earth brown and text)', names: ['umber', 'umber-soft', 'on-umber', 'on-umber-muted', 'ink', 'ink-muted', 'ink-subtle'] },
+  { title: 'Accent — 10% (golden ochre)', names: ['ochre', 'ochre-hover', 'ochre-soft', 'ochre-ink', 'on-ochre', 'focus-ring'] },
   {
-    title: 'Ngữ nghĩa — chỉ khi dữ liệu có trạng thái',
+    title: 'Semantic — only when data has a state',
     names: ['success', 'success-soft', 'warning', 'warning-soft', 'danger', 'danger-soft', 'on-danger', 'info', 'info-soft'],
   },
 ].map((g) => ({ ...g, tokens: g.names.map((n) => byName[n]!) }))
 
-/** Tách ghi chú thành chữ thường và tên token (viết trong dấu `…`) để hiển thị dạng mã */
+/** Split a usage note into plain text and token names (written in `…`) so names render as code */
 const parts = (usage: string) => usage.split(/`([^`]+)`/).map((text, i) => ({ text, code: i % 2 === 1 }))
 </script>
 
 <template>
   <div class="palette">
-    <figure class="ratio" aria-label="Tỷ lệ 60 – 30 – 10">
+    <figure class="ratio" aria-label="60 – 30 – 10 ratio">
       <span style="flex: 60; background: var(--ground)">60% ground</span>
       <span style="flex: 30; background: var(--umber); color: var(--on-umber)">30% umber</span>
       <span style="flex: 10; background: var(--ochre); color: var(--on-ochre)">10%</span>

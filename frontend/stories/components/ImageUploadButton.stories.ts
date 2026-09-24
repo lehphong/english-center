@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import ImageUploadButton from '~/components/ImageUploadButton.vue'
 
-/** Chọn ảnh JPG / PNG / WEBP ≤ 2MB; kiểm tra ngay ở trình duyệt, backend kiểm tra lại. */
+/** Picks a JPG / PNG / WEBP image up to 2MB; checked in the browser and again by the API. */
 const meta = {
   title: 'Components/ImageUploadButton',
   component: ImageUploadButton,

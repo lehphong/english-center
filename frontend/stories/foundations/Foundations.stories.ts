@@ -12,19 +12,19 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-/** Bảng màu theo vai trò 60 – 30 – 10, đọc trực tiếp từ design-system/tokens.json. Đổi theme ở thanh công cụ để xem bản tối. */
+/** The palette by 60 – 30 – 10 role, read from design-system/tokens.json. Switch theme in the toolbar to see the dark values. */
 export const Colors: Story = {
-  name: 'Màu',
+  name: 'Colors',
   render: () => ({ components: { ColorPalette }, template: '<ColorPalette />' }),
 }
 
-/** Be Vietnam Pro cho giao diện (dấu tiếng Việt rõ ở cỡ nhỏ), IBM Plex Mono cho số liệu. */
+/** Be Vietnam Pro for the interface (clear Vietnamese diacritics at small sizes), IBM Plex Mono for figures. */
 export const Typography: Story = {
-  name: 'Chữ',
+  name: 'Typography',
   render: () => ({ components: { TypeScale }, template: '<TypeScale />' }),
 }
 
 export const SpacingAndShape: Story = {
-  name: 'Khoảng cách, bo góc, đổ bóng',
+  name: 'Spacing, radius and shadow',
   render: () => ({ components: { SpaceAndShape }, template: '<SpaceAndShape />' }),
 }

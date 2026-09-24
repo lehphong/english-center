@@ -5,7 +5,7 @@ import tokens from '../../design-system/tokens.json'
 <template>
   <div class="wrap">
     <section>
-      <h3>Khoảng cách — lưới 4px</h3>
+      <h3>Spacing — 4px grid</h3>
       <div v-for="s in tokens.spacing.tokens" :key="s.name" class="row">
         <span class="code">{{ s.name }} · {{ s.value }}</span>
         <span class="bar" :style="{ width: s.value }" />
@@ -13,7 +13,7 @@ import tokens from '../../design-system/tokens.json'
       </div>
     </section>
     <section>
-      <h3>Bo góc — Thổ vững chãi, góc gọn</h3>
+      <h3>Radius — steady earth, tight corners</h3>
       <div class="shapes">
         <div v-for="r in tokens.radius.tokens" :key="r.name" class="shape-item">
           <div class="shape" :style="{ borderRadius: r.value }" />
@@ -24,7 +24,7 @@ import tokens from '../../design-system/tokens.json'
       </div>
     </section>
     <section>
-      <h3>Đổ bóng</h3>
+      <h3>Shadow</h3>
       <div class="shapes">
         <div v-for="s in tokens.shadow.tokens" :key="s.name" class="shape-item">
           <div class="shape raised" :style="{ boxShadow: `var(--${s.name})` }" />

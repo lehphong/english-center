@@ -3,8 +3,8 @@ import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import { ElButton } from 'element-plus'
 
 /**
- * Nút dùng `ElButton` của Element Plus, đã được theme theo Hoàng Thổ trong `app/assets/css/element-plus.css`.
- * Mỗi vùng màn hình chỉ một nút `primary`.
+ * Buttons are Element Plus `ElButton`, themed for Hoàng Thổ in `app/assets/css/element-plus.css`.
+ * Use one `primary` button per region of the screen.
  */
 const meta = {
   title: 'Components/Button',

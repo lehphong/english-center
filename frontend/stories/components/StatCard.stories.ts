@@ -13,7 +13,7 @@ type Story = StoryObj<typeof meta>
 
 export const Playground: Story = {}
 
-/** Chỉ một thẻ trên màn hình mang `accent` — con số người xem cần thấy đầu tiên. */
+/** Only one card per screen is `accent` — the figure people should see first. */
 export const Dashboard: Story = {
   render: () => ({
     components: { StatCard, StatusTag },

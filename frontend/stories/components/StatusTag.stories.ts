@@ -17,22 +17,22 @@ type Story = StoryObj<typeof meta>
 
 export const Playground: Story = {}
 
-/** Mỗi tone có một hình riêng — tròn, tam giác, vuông, thoi, gạch — để không phải dựa vào màu. */
+/** Each tone has its own shape — circle, triangle, square, diamond, dash — so color is never the only signal. */
 export const Tones: Story = {
   render: () => ({
     components: { StatusTag },
     template: `
       <div style="display:flex;flex-wrap:wrap;gap:8px">
-        <StatusTag tone="success" label="Thành công" />
-        <StatusTag tone="warning" label="Cảnh báo" />
-        <StatusTag tone="danger" label="Lỗi" />
-        <StatusTag tone="info" label="Thông tin" />
-        <StatusTag tone="neutral" label="Trung tính" />
+        <StatusTag tone="success" label="Success" />
+        <StatusTag tone="warning" label="Warning" />
+        <StatusTag tone="danger" label="Error" />
+        <StatusTag tone="info" label="Information" />
+        <StatusTag tone="neutral" label="Neutral" />
       </div>`,
   }),
 }
 
-/** Trạng thái nghiệp vụ lấy tone cố định trong component — dùng `group` + `value`, không tự chọn màu. */
+/** Business states get a fixed tone inside the component — pass `group` + `value`, never pick a color. */
 export const BusinessStatuses: Story = {
   render: () => ({
     components: { StatusTag },

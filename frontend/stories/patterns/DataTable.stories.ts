@@ -9,8 +9,8 @@ const rows = [
 ]
 
 /**
- * Bảng danh sách: phẳng trên `surface`, header lõm kiểu nhãn, số tiền mono căn phải và không tô màu —
- * trạng thái nằm ở cột StatusTag riêng.
+ * List tables: flat on `surface`, a sunken label-style header, money in right-aligned mono and never colored —
+ * state lives in its own StatusTag column.
  */
 const meta = {
   title: 'Patterns/DataTable',

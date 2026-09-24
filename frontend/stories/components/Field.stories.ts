@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import { ElForm, ElFormItem, ElInput, ElOption, ElSelect } from 'element-plus'
 
-/** Ô nhập liệu: nhãn luôn hiện, viền `line-strong`, lỗi viền `danger` kèm câu nói rõ cách sửa. */
+/** Form fields: the label is always visible, borders use `line-strong`, errors use a `danger` border and say how to fix it. */
 const meta = {
   title: 'Components/Field',
   tags: ['!autodocs'],
