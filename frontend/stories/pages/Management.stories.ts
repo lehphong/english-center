@@ -12,6 +12,7 @@ import GradesPage from '~/pages/grades/index.vue'
 import StudentDetailPage from '~/pages/students/[id].vue'
 import StudentsPage from '~/pages/students/index.vue'
 import UsersPage from '~/pages/users/index.vue'
+import { apiIdle } from '../../.storybook/mocks/http'
 import type { NuxtStoryParameters } from '../../.storybook/preview'
 
 /** Every management screen in the admin shell, signed in as an administrator, with sample data. */
@@ -27,6 +28,8 @@ type Story = StoryObj<typeof meta>
 const page = (component: object, route: NuxtStoryParameters['route'], session: NuxtStoryParameters['session'] = 'Admin'): Story => ({
   parameters: { nuxt: { layout: 'default', session, route } },
   render: () => ({ components: { Page: component }, template: '<Page />' }),
+  // Wait for the page's data, so the accessibility check sees the filled page
+  play: apiIdle,
 })
 
 /** One accent figure (tuition collected); the other metrics stay in ink. */
@@ -38,6 +41,7 @@ export const Courses = page(CoursesPage, { path: '/courses' })
 export const CourseDeleteRefused: Story = {
   ...Courses,
   play: async ({ canvasElement }) => {
+    await apiIdle()
     const canvas = within(canvasElement)
     const deleteButtons = await canvas.findAllByRole('button', { name: 'Xóa' })
     await userEvent.click(deleteButtons[0]!)

@@ -4,7 +4,7 @@ import { ElButton } from 'element-plus'
 import PageHeader from '~/components/PageHeader.vue'
 
 const meta = {
-  title: 'Components/PageHeader',
+  title: 'Components/Navigation/PageHeader',
   component: PageHeader,
   args: { title: 'Quản lý khóa học', subtitle: '' },
   render: (args) => ({

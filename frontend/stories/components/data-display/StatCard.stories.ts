@@ -3,7 +3,7 @@ import StatCard from '~/components/StatCard.vue'
 import StatusTag from '~/components/StatusTag.vue'
 
 const meta = {
-  title: 'Components/StatCard',
+  title: 'Components/Data display/StatCard',
   component: StatCard,
   args: { label: 'Học phí đã thu', value: '13.500.000 ₫', accent: false },
 } satisfies Meta<typeof StatCard>

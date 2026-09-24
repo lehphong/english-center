@@ -6,7 +6,7 @@ import UserMenu from '~/components/UserMenu.vue'
 
 /** The controls on the right of the app header: theme, language and the signed-in user. */
 const meta = {
-  title: 'Components/Header controls',
+  title: 'Components/Navigation/Header controls',
   parameters: { nuxt: { session: 'Admin' } },
 } satisfies Meta
 

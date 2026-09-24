@@ -16,6 +16,7 @@ import PortalLayout from '../app/layouts/portal.vue'
 import '../app/assets/css/tokens.css'
 import '../app/assets/css/element-plus.css'
 import '../app/assets/css/main.css'
+import '../stories/showcase.css'
 import { sessionUsers } from './mocks/data'
 import { navigateTo, route, useCookie } from './nuxt/runtime'
 
@@ -112,6 +113,19 @@ const preview: Preview = {
   parameters: {
     layout: 'padded',
     backgrounds: { disable: true },
+    options: {
+      storySort: {
+        order: [
+          'Introduction',
+          'Foundations',
+          'Components',
+          ['Actions', 'Form', 'Data display', 'Feedback', 'Navigation', 'Brand'],
+          'Patterns',
+          'Layouts',
+          'Pages',
+        ],
+      },
+    },
     controls: { expanded: true },
     // Principle 9: every story is checked for accessibility
     a11y: { test: 'error' },

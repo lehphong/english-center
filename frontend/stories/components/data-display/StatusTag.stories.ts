@@ -3,7 +3,7 @@ import StatusTag from '~/components/StatusTag.vue'
 import { LEARNING_STATUSES, PAYMENT_STATUSES } from '~/types/enums'
 
 const meta = {
-  title: 'Components/StatusTag',
+  title: 'Components/Data display/StatusTag',
   component: StatusTag,
   argTypes: {
     tone: { control: 'select', options: ['success', 'warning', 'danger', 'info', 'neutral'] },

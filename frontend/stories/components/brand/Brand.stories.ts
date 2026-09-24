@@ -3,7 +3,7 @@ import BrandMark from '~/components/BrandMark.vue'
 
 /** The brand mark: three rice-terrace steps in golden ochre, set beside the "English Center" name. */
 const meta = {
-  title: 'Components/BrandMark',
+  title: 'Components/Brand/BrandMark',
   component: BrandMark,
   args: { size: 40 },
 } satisfies Meta<typeof BrandMark>

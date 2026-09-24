@@ -1,0 +1,32 @@
+/* Layout helpers for component showcases in stories only (not shipped with the app) */
+.sb-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.sb-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.sb-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--space-4);
+}
+
+.sb-label {
+  margin: 0 0 var(--space-2);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+.sb-narrow {
+  max-width: 420px;
+}

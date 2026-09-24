@@ -1,18 +1,24 @@
-import { Delete, Plus } from '@element-plus/icons-vue'
+import { ArrowDown, Delete, Download, Edit, Plus, Refresh, Search } from '@element-plus/icons-vue'
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import { ElButton } from 'element-plus'
 
 /**
- * Buttons are Element Plus `ElButton`, themed for Hoàng Thổ in `app/assets/css/element-plus.css`.
- * Use one `primary` button per region of the screen.
+ * `ElButton`, themed in `app/assets/css/element-plus.css`.
+ *
+ * - **Primary** (ochre fill, dark `on-ochre` text): the one main action of a region: *Save*, *Add course*. At most one per region.
+ * - **Default**: secondary actions, including *Cancel*.
+ * - **Plain primary**: a secondary action that should still stand out, like *Search* next to the filters.
+ * - **Link**: row actions inside tables (*Edit*, *Delete*); `danger` only for destructive ones.
+ * - **Danger** (filled): only the confirm button of a destructive dialog.
  */
 const meta = {
-  title: 'Components/Button',
+  title: 'Components/Actions/Button',
   component: ElButton,
   argTypes: {
     type: { control: 'select', options: ['primary', 'default', 'danger'] },
     plain: { control: 'boolean' },
     link: { control: 'boolean' },
+    loading: { control: 'boolean' },
     disabled: { control: 'boolean' },
     size: { control: 'select', options: ['large', 'default', 'small'] },
   },
@@ -25,24 +31,86 @@ type Story = StoryObj<typeof meta>
 
 export const Playground: Story = {}
 
-export const Variants: Story = {
+/** From strongest to weakest. A region shows one primary action; everything else steps down. */
+export const Hierarchy: Story = {
   render: () => ({
-    components: { ElButton },
-    setup: () => ({ Plus, Delete }),
+    setup: () => ({ Plus, Search }),
     template: `
-      <div style="display:flex;flex-direction:column;gap:16px">
-        <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center">
-          <ElButton type="primary" :icon="Plus">Thêm khóa học</ElButton>
-          <ElButton>Hủy</ElButton>
-          <ElButton type="primary" plain>Tìm kiếm</ElButton>
-          <ElButton type="primary" link>Sửa</ElButton>
-          <ElButton type="danger" link>Xóa</ElButton>
-        </div>
-        <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center">
-          <ElButton type="danger" :icon="Delete">Xác nhận xóa</ElButton>
-          <ElButton type="primary" disabled>Lưu (đang khóa)</ElButton>
-          <ElButton type="primary" size="small">Lưu điểm</ElButton>
-        </div>
+      <div class="sb-row">
+        <el-button type="primary" :icon="Plus">Thêm khóa học</el-button>
+        <el-button type="primary" plain :icon="Search">Tìm kiếm</el-button>
+        <el-button>Hủy</el-button>
+        <el-button type="primary" link>Sửa</el-button>
+        <el-button type="danger" link>Xóa</el-button>
+      </div>`,
+  }),
+}
+
+export const Sizes: Story = {
+  render: () => ({
+    template: `
+      <div class="sb-row">
+        <el-button type="primary" size="large">Đăng nhập</el-button>
+        <el-button type="primary">Lưu</el-button>
+        <el-button type="primary" size="small">Lưu điểm</el-button>
+      </div>`,
+  }),
+}
+
+/** Icon-only buttons must carry an `aria-label` (and a tooltip when the icon is not obvious). */
+export const WithIcons: Story = {
+  render: () => ({
+    setup: () => ({ Plus, Download, Edit, Delete, Refresh }),
+    template: `
+      <div class="sb-row">
+        <el-button type="primary" :icon="Plus">Ghi danh</el-button>
+        <el-button :icon="Download">Xuất Excel</el-button>
+        <el-button :icon="Refresh" circle aria-label="Tải lại" />
+        <el-button :icon="Edit" circle aria-label="Sửa" />
+        <el-button type="danger" :icon="Delete" circle plain aria-label="Xóa" />
+      </div>`,
+  }),
+}
+
+/** While saving, the button shows a spinner and ignores clicks; disabled buttons fade but keep their shape. */
+export const States: Story = {
+  render: () => ({
+    template: `
+      <div class="sb-row">
+        <el-button type="primary" loading>Đang lưu</el-button>
+        <el-button type="primary" disabled>Lưu</el-button>
+        <el-button disabled>Hủy</el-button>
+        <el-button type="primary" link disabled>Sửa</el-button>
+      </div>`,
+  }),
+}
+
+/** The confirm button of a destructive dialog: the only place a filled danger button appears. */
+export const Destructive: Story = {
+  render: () => ({
+    setup: () => ({ Delete }),
+    template: `
+      <div class="sb-row">
+        <el-button>Hủy</el-button>
+        <el-button type="danger" :icon="Delete">Xác nhận xóa</el-button>
+      </div>`,
+  }),
+}
+
+/** Related actions that switch a view or step through data. */
+export const Group: Story = {
+  render: () => ({
+    setup: () => ({ ArrowDown }),
+    template: `
+      <div class="sb-row">
+        <el-button-group>
+          <el-button>Buổi trước</el-button>
+          <el-button>Buổi sau</el-button>
+        </el-button-group>
+        <el-button-group>
+          <el-button type="primary">Lưu</el-button>
+          <el-button type="primary" :icon="ArrowDown" aria-label="Thêm tùy chọn lưu" />
+        </el-button-group>
       </div>`,
   }),
 }

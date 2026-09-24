@@ -51,7 +51,7 @@ The UI follows the **Hoàng Thổ** ("golden earth") design system: an earth pal
 - **Single source of truth**: `frontend/design-system/tokens.json`. Edit tokens there, then run `pnpm tokens` to regenerate `app/assets/css/tokens.css`.
 - **Element Plus** is mapped onto the tokens in `app/assets/css/element-plus.css`.
 - **Automated checks**: `test/unit/design-tokens.test.ts` fails when `tokens.css` drifts from `tokens.json`, or when any text/background pair falls below WCAG contrast (4.5:1 for text, 3:1 for borders and focus rings) in either theme.
-- **Storybook**: `pnpm storybook` → http://localhost:6006. It documents the whole frontend against a mocked API: foundations (colors, type, spacing read from `tokens.json`), every component and dialog, the three layouts, and every page. The Accessibility addon checks each story; the toolbar switches theme and language.
+- **Storybook**: `pnpm storybook` → http://localhost:6006. It documents the whole frontend against a mocked API: foundations (colors, type, spacing read from `tokens.json`); a component library of about 40 components grouped into Actions, Form, Data display, Feedback and Navigation, each with its states and when to use it; the app's dialogs; the three layouts; and every page. The Accessibility addon checks each story; the toolbar switches theme and language.
 
 Color rules for new screens:
 - One `type="primary"` button per region (ochre fill with dark `on-ochre` text — never white text on `ochre`).

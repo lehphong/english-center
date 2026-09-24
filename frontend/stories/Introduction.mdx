@@ -24,10 +24,10 @@ theme and language, and the **Accessibility** panel to review each story.
 ## The 10 color principles
 
 1. **60 – 30 – 10** — `ground`/`surface` 60%, `umber` and text 30%, `ochre` 10%. See **Foundations › Colors**.
-2. **Hierarchy** — `ochre` buttons / highlighted figure → headings → data → `ink-muted` labels → `ink-subtle` placeholders.
+2. **Hierarchy** — `ochre` buttons / highlighted figure → headings → data → `ink-muted` labels and placeholders → `ink-subtle` disabled text.
 3. **Harmony** — analogous golden earth → burnt orange → brown; blue is the complement, used only for information.
 4. **Contrast** — every text/background pair ≥ 4.5:1, control borders and focus ≥ 3:1, checked by a test.
-5. **Consistency** — one state, one tone everywhere (see **Components › StatusTag**).
+5. **Consistency** — one state, one tone everywhere (see **Components › Data display › StatusTag**).
 6. **Semantic color** — green success, red error, orange warning, blue information.
 7. **Context** — an academic office: steady, warm, trustworthy; not playful.
 8. **Saturation** — `ochre` is the most saturated color, so it covers 10% of the screen; semantic colors sit on `-soft` grounds.
@@ -37,7 +37,13 @@ theme and language, and the **Accessibility** panel to review each story.
 ## What is here
 
 - **Foundations** — colors, type scale, spacing, radius and shadows, read from `tokens.json`.
-- **Components** — every component in `app/components`, including form dialogs and header controls.
+- **Components** — every building block, themed and documented with when to use it:
+  - **Actions**: Button, Link, Dropdown
+  - **Form**: Field, Input, Number input, Select, Date picker, Checkbox, Radio, Switch, Slider, Image upload, the app's form dialogs
+  - **Data display**: StatusTag, Tag, Badge, Avatar, StatCard, Card, Descriptions, Table, Progress, Timeline, Empty, Skeleton, Collapse
+  - **Feedback**: Alert, Message, Notification, Message box, Dialog, Drawer, Loading, Result, Tooltip, Popover
+  - **Navigation**: PageHeader, Header controls, Tabs, Breadcrumb, Pagination, Steps
+  - **Brand**: BrandMark
 - **Patterns** — the data table used across management screens.
 - **Layouts** — the admin shell, the student portal and the sign-in frame.
 - **Pages** — every screen of the app with sample data; some stories include interaction tests (**Interactions** panel).

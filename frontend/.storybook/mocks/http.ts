@@ -155,18 +155,36 @@ const routes: [method: string, pattern: RegExp, handler: Handler][] = [
   ['GET', /^\/portal\/grades$/, () => db.myGrades],
 ]
 
+let inFlight = 0
+
+/**
+ * Resolves once no request has been in flight for two consecutive ticks, so a page story's play function can wait
+ * for the page's data (and requests chained after it) before interactions and the accessibility check run.
+ */
+export async function apiIdle() {
+  for (let idleTicks = 0; idleTicks < 2; ) {
+    await new Promise((resolve) => setTimeout(resolve, 60))
+    idleTicks = inFlight === 0 ? idleTicks + 1 : 0
+  }
+}
+
 /** Drop-in replacement for the `$fetch` instance the API client is created with. */
 export async function mockHttp(url: string, options: RequestOptions = {}) {
   const method = (options.method ?? 'GET').toUpperCase()
   logRequest(`${method} ${url}`, options.query ?? options.body ?? '')
-  await new Promise((resolve) => setTimeout(resolve, 120))
+  inFlight++
+  try {
+    await new Promise((resolve) => setTimeout(resolve, 120))
 
-  for (const [routeMethod, pattern, handler] of routes) {
-    const match = url.match(pattern)
-    if (match && routeMethod === method) return structuredClone(handler(match, options))
+    for (const [routeMethod, pattern, handler] of routes) {
+      const match = url.match(pattern)
+      if (match && routeMethod === method) return structuredClone(handler(match, options))
+    }
+
+    // Any other create / update / delete succeeds and echoes its body
+    if (method !== 'GET') return options.body ?? null
+    return problem(404, 'http.404', `No mock for ${method} ${url}`)
+  } finally {
+    inFlight--
   }
-
-  // Any other create / update / delete succeeds and echoes its body
-  if (method !== 'GET') return options.body ?? null
-  return problem(404, 'http.404', `No mock for ${method} ${url}`)
 }

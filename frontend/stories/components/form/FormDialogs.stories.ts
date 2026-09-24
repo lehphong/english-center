@@ -6,15 +6,15 @@ import EnrollmentFormDialog from '~/components/EnrollmentFormDialog.vue'
 import ResetPasswordDialog from '~/components/ResetPasswordDialog.vue'
 import StudentFormDialog from '~/components/StudentFormDialog.vue'
 import UserFormDialog from '~/components/UserFormDialog.vue'
-import { classes, courses, enrollments, students, users } from '../../.storybook/mocks/data'
-import { openAfterMount } from '../helpers'
+import { classes, courses, enrollments, students, users } from '../../../.storybook/mocks/data'
+import { openAfterMount } from '../../helpers'
 
 /**
  * Create / edit dialogs of the management screens. Each one validates in the browser with translated rules and
  * then calls the API; saving here goes to the mocked API and is logged in the Actions panel.
  */
 const meta = {
-  title: 'Components/Form dialogs',
+  title: 'Components/Form/Form dialogs',
   tags: ['!autodocs'],
   parameters: { layout: 'fullscreen', nuxt: { session: 'Admin' } },
 } satisfies Meta
