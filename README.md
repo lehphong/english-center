@@ -1,162 +1,162 @@
 # English Center
 
-Hệ thống quản lý trung tâm Anh ngữ: khóa học, lớp học, học viên, ghi danh và học phí, điểm danh, nhập điểm (IELTS / TOEIC / thang 10), tài khoản và phân quyền, cổng tra cứu cho học viên. Giao diện song ngữ Việt / Anh.
+A management system for an English language center: courses, classes, students, enrollments and tuition, attendance, grading (IELTS / TOEIC / 10-point scale), user accounts and roles, and a self-service portal for students. The interface is bilingual (Vietnamese / English).
 
-| Phần | Công nghệ |
+| Area | Stack |
 |---|---|
 | Backend | .NET 10, ASP.NET Core Web API, EF Core 10 + SQL Server, FluentValidation, JWT |
 | Frontend | Nuxt 4 (SPA), Vue 3, TypeScript, Element Plus, Pinia, @nuxtjs/i18n |
-| Kiểm thử | xUnit (unit + integration trên SQLite in-memory), Vitest + @nuxt/test-utils |
-| Design system | Hoàng Thổ — token trong `frontend/design-system/tokens.json`, Storybook 10 |
-| Hạ tầng | Docker Compose (SQL Server, API, nginx), GitHub Actions |
+| Testing | xUnit (unit + integration on in-memory SQLite), Vitest + @nuxt/test-utils |
+| Design system | Hoàng Thổ — tokens in `frontend/design-system/tokens.json`, Storybook 10 |
+| Infrastructure | Docker Compose (SQL Server, API, nginx), GitHub Actions |
 
-## Chạy nhanh bằng Docker
+## Quick start with Docker
 
 ```bash
 docker compose up -d --build
 ```
 
-Mở http://localhost:8088. Đổi cổng bằng biến `WEB_PORT`, ví dụ `WEB_PORT=9000 docker compose up -d`.
+Open http://localhost:8088. Change the port with `WEB_PORT`, e.g. `WEB_PORT=9000 docker compose up -d`.
 
-Tài khoản mẫu (mật khẩu `Passw0rd!`):
+Sample accounts (password `Passw0rd!`):
 
-| Tên đăng nhập | Vai trò |
+| Username | Role |
 |---|---|
-| `admin` | Quản trị viên: toàn quyền, quản lý tài khoản |
-| `staff` | Giáo vụ: nghiệp vụ đào tạo |
-| `hv001` | Học viên: cổng tra cứu cá nhân |
+| `admin` | Administrator: full access, manages accounts |
+| `staff` | Academic staff: day-to-day training operations |
+| `hv001` | Student: personal portal |
 
-## Chạy khi phát triển
+## Local development
 
-Yêu cầu: .NET SDK 10, Node 22+, pnpm 10, Docker.
+Requirements: .NET SDK 10, Node 22+, pnpm 10, Docker.
 
 ```bash
 # 1. Database
-docker compose up -d db                      # SQL Server ở localhost:14330
+docker compose up -d db                      # SQL Server on localhost:14330
 
-# 2. Backend: http://localhost:5080, tài liệu API: http://localhost:5080/scalar
+# 2. Backend: http://localhost:5080, API reference: http://localhost:5080/scalar
 cd backend
-dotnet run --project src/EnglishCenter.Api   # tự chạy migration và nạp dữ liệu mẫu
+dotnet run --project src/EnglishCenter.Api   # applies migrations and seeds sample data
 
-# 3. Frontend: http://localhost:3000 (proxy /api sang backend)
+# 3. Frontend: http://localhost:3000 (proxies /api to the backend)
 cd frontend
 pnpm install
 pnpm dev
 ```
 
-## Design system Hoàng Thổ
+## Hoàng Thổ design system
 
-Giao diện theo design system **Hoàng Thổ**: bảng màu mệnh Thổ (vàng đất `ochre` làm điểm nhấn, nâu đất `umber` làm khung, nền cát sáng) theo quy tắc 60 – 30 – 10, chữ Be Vietnam Pro và IBM Plex Mono, hai theme sáng / tối.
+The UI follows the **Hoàng Thổ** ("golden earth") design system: an earth palette built around the Thổ element — golden ochre (`ochre`) as the accent, earth brown (`umber`) for the navigation frame, and a light sand ground — applied with the 60–30–10 rule, Be Vietnam Pro and IBM Plex Mono typefaces, and light and dark themes.
 
-- **Nguồn duy nhất**: `frontend/design-system/tokens.json`. Sửa token ở đây rồi chạy `pnpm tokens` để sinh lại `app/assets/css/tokens.css`.
-- **Element Plus** được ánh xạ sang token trong `app/assets/css/element-plus.css`.
-- **Kiểm tra tự động**: `test/unit/design-tokens.test.ts` báo lỗi khi `tokens.css` lệch khỏi `tokens.json`, hoặc khi một cặp chữ / nền dưới chuẩn WCAG (4.5:1 cho chữ, 3:1 cho viền và focus) ở bất kỳ theme nào.
-- **Storybook**: `pnpm storybook` → http://localhost:6006. Có trang Giới thiệu (lý do chọn màu theo ngũ hành, 10 nguyên tắc màu), Foundations (màu, chữ, khoảng cách đọc từ `tokens.json`), từng component và mẫu bảng dữ liệu. Addon Accessibility kiểm tra mọi story; thanh công cụ đổi theme và ngôn ngữ.
+- **Single source of truth**: `frontend/design-system/tokens.json`. Edit tokens there, then run `pnpm tokens` to regenerate `app/assets/css/tokens.css`.
+- **Element Plus** is mapped onto the tokens in `app/assets/css/element-plus.css`.
+- **Automated checks**: `test/unit/design-tokens.test.ts` fails when `tokens.css` drifts from `tokens.json`, or when any text/background pair falls below WCAG contrast (4.5:1 for text, 3:1 for borders and focus rings) in either theme.
+- **Storybook**: `pnpm storybook` → http://localhost:6006. It documents the whole frontend against a mocked API: foundations (colors, type, spacing read from `tokens.json`), every component and dialog, the three layouts, and every page. The Accessibility addon checks each story; the toolbar switches theme and language.
 
-Quy tắc dùng màu khi thêm màn hình mới:
-- Mỗi vùng chỉ một nút `type="primary"` (nền `ochre`, chữ nâu `on-ochre` — không bao giờ chữ trắng trên `ochre`).
-- Trạng thái dữ liệu dùng `<StatusTag>`: tone cố định theo trạng thái, luôn có hình + chữ. Không tô màu số tiền.
-- Thẻ chỉ số dùng `<StatCard>`, chỉ một thẻ `accent` mỗi màn hình.
+Color rules for new screens:
+- One `type="primary"` button per region (ochre fill with dark `on-ochre` text — never white text on `ochre`).
+- Data states use `<StatusTag>`: each state has a fixed tone and always shows a shape and a label. Amounts of money are never colored.
+- Metrics use `<StatCard>`, with at most one `accent` card per screen.
 
-## Cấu trúc thư mục
+## Project structure
 
 ```
 .
 ├── backend/
 │   ├── src/
-│   │   ├── EnglishCenter.Domain/          Entity, enum, quy tắc nghiệp vụ thuần (không phụ thuộc gì)
+│   │   ├── EnglishCenter.Domain/          Entities, enums, pure business rules (no dependencies)
 │   │   │   ├── Entities/                  Course, CourseClass, Student, Enrollment, Grade...
-│   │   │   └── Services/ScoreCalculator   Cách tính điểm theo thang IELTS / TOEIC / 10
-│   │   ├── EnglishCenter.Application/     Use case của từng tính năng
-│   │   │   ├── Common/                    Interface cho tầng ngoài, exception, phân trang
-│   │   │   └── Features/<TínhNăng>/       Dto, Validator, Service (vd Features/Enrollments)
-│   │   ├── EnglishCenter.Infrastructure/  EF Core, migration, seed, BCrypt, JWT, lưu file
-│   │   └── EnglishCenter.Api/             Controller, xác thực / phân quyền, xử lý lỗi, OpenAPI
+│   │   │   └── Services/ScoreCalculator   Scoring for the IELTS / TOEIC / 10-point scales
+│   │   ├── EnglishCenter.Application/     Use cases, one folder per feature
+│   │   │   ├── Common/                    Interfaces for outer layers, exceptions, paging
+│   │   │   └── Features/<Feature>/        DTOs, validators, service (e.g. Features/Enrollments)
+│   │   ├── EnglishCenter.Infrastructure/  EF Core, migrations, seed data, BCrypt, JWT, file storage
+│   │   └── EnglishCenter.Api/             Controllers, authentication / authorization, errors, OpenAPI
 │   └── tests/
-│       ├── EnglishCenter.UnitTests/         Domain + service (SQLite in-memory)
-│       └── EnglishCenter.IntegrationTests/  Gọi HTTP thật vào API (WebApplicationFactory)
+│       ├── EnglishCenter.UnitTests/         Domain + services (in-memory SQLite)
+│       └── EnglishCenter.IntegrationTests/  Real HTTP calls against the API (WebApplicationFactory)
 ├── frontend/
 │   ├── app/
-│   │   ├── api/            Client gọi API, gom theo tính năng (useApi().courses.list...)
-│   │   ├── components/     Component dùng chung và form dialog
+│   │   ├── api/            API client grouped by feature (useApi().courses.list...)
+│   │   ├── components/     Shared components and form dialogs
 │   │   ├── composables/    usePagedList, useApiErrors, useFormRules, useFormat...
-│   │   ├── layouts/        default (quản trị), portal (học viên), auth (đăng nhập)
-│   │   ├── middleware/     auth.global.ts: kiểm tra đăng nhập và vai trò của trang
-│   │   ├── pages/          Mỗi file là một route (file-based routing)
-│   │   ├── stores/         Pinia (phiên đăng nhập)
-│   │   ├── types/          Kiểu dữ liệu khớp với DTO của API
-│   │   └── utils/          Hàm thuần: chuẩn hóa lỗi, tính điểm xem trước...
+│   │   ├── layouts/        default (admin), portal (student), auth (sign-in)
+│   │   ├── middleware/     auth.global.ts: authentication and per-page role checks
+│   │   ├── pages/          One file per route (file-based routing)
+│   │   ├── stores/         Pinia (session)
+│   │   ├── types/          Types matching the API DTOs
+│   │   └── utils/          Pure helpers: error normalization, grade preview...
 │   ├── i18n/locales/       vi.json, en.json
-│   ├── design-system/      tokens.json — nguồn token của design system Hoàng Thổ
-│   ├── stories/            Storybook: Giới thiệu, Foundations, Components, Patterns
-│   ├── .storybook/         cấu hình Storybook (tái tạo auto-import của Nuxt)
-│   ├── scripts/            build-tokens.mjs sinh tokens.css
-│   └── test/               unit/ (hàm thuần, token), nuxt/ (cần môi trường Nuxt)
+│   ├── design-system/      tokens.json — Hoàng Thổ design tokens
+│   ├── stories/            Storybook: introduction, foundations, components, layouts, pages
+│   ├── .storybook/         Storybook config, Nuxt runtime shims and the mocked API
+│   ├── scripts/            build-tokens.mjs generates tokens.css
+│   └── test/               unit/ (pure functions, tokens), nuxt/ (needs the Nuxt environment)
 ├── docker-compose.yml
 └── .github/workflows/ci.yml
 ```
 
-Chiều phụ thuộc của backend: `Api → Infrastructure → Application → Domain`. Tầng trong không biết tầng ngoài: Application chỉ làm việc qua interface (`IApplicationDbContext`, `IPasswordHasher`, `IFileStorage`...), Infrastructure cung cấp cài đặt.
+Backend dependencies point inward: `Api → Infrastructure → Application → Domain`. Inner layers know nothing about outer ones: Application works only through interfaces (`IApplicationDbContext`, `IPasswordHasher`, `IFileStorage`...) that Infrastructure implements.
 
-## Quy ước
+## Conventions
 
-### Lỗi API
-Mọi lỗi trả về theo chuẩn ProblemDetails, kèm `code` ổn định để frontend dịch:
+### API errors
+Every error is returned as ProblemDetails with a stable `code` that the frontend translates:
 
 ```json
 { "status": 422, "title": "Class IELTS-2601 is full (15 students).", "code": "class.full" }
 ```
 
-| HTTP | Khi nào | Nơi phát sinh |
+| HTTP | When | Raised by |
 |---|---|---|
-| 400 `validation` | Dữ liệu sai; `errors` là tên field → `[{ code, message, params }]` | FluentValidation |
-| 401 | Chưa đăng nhập, sai mật khẩu, token hết hạn | `UnauthorizedException` |
-| 403 | Không đủ quyền | Policy `Admin` / `Staff` / `Student` |
-| 404 `<resource>.notFound` | Không tìm thấy | `NotFoundException` |
-| 409 | Trùng dữ liệu (mã lớp, email...) | `ConflictException` |
-| 422 | Vi phạm quy tắc nghiệp vụ (lớp đủ sĩ số...) | `DomainException` |
+| 400 `validation` | Invalid input; `errors` maps each field to `[{ code, message, params }]` | FluentValidation |
+| 401 | Not signed in, wrong password, expired token | `UnauthorizedException` |
+| 403 | Insufficient role | `Admin` / `Staff` / `Student` policies |
+| 404 `<resource>.notFound` | Resource does not exist | `NotFoundException` |
+| 409 | Duplicate data (class code, email...) | `ConflictException` |
+| 422 | Business rule violated (class is full...) | `DomainException` |
 
-Frontend dịch lỗi bằng `useApiErrors()`: `errors.<code>` cho lỗi nghiệp vụ, `validation.<code>` cho lỗi từng field. Không có bản dịch thì hiện thông báo tiếng Anh từ server.
+The frontend translates errors with `useApiErrors()`: `errors.<code>` for business errors and `validation.<code>` for field errors. When no translation exists, the English message from the server is shown.
 
-### Đa ngôn ngữ
-- Mọi chữ hiển thị đặt trong `i18n/locales/vi.json` và `en.json`, gọi bằng `t('...')`. Hai file phải có cùng bộ key.
-- Enum hiển thị qua `useEnumOptions().label('learningStatus', value)`, key `enums.<nhóm>.<giá trị>`.
-- Tiền, ngày định dạng theo ngôn ngữ đang chọn bằng `useFormat()`.
+### Internationalization
+- Every visible string lives in `i18n/locales/vi.json` and `en.json` and is read with `t('...')`. Both files must have the same keys.
+- Enums are displayed with `useEnumOptions().label('learningStatus', value)`, using keys `enums.<group>.<value>`.
+- Money and dates are formatted for the current language with `useFormat()`.
 
-### Thêm một tính năng mới
-1. **Domain**: thêm entity / quy tắc; quy tắc vi phạm thì ném `DomainException("<feature>.<rule>", ...)`.
-2. **Infrastructure**: cấu hình EF trong `Persistence/Configurations`, thêm `DbSet` vào `ApplicationDbContext` và `IApplicationDbContext`, rồi tạo migration:
+### Adding a feature
+1. **Domain**: add the entity or rule; a violated rule throws `DomainException("<feature>.<rule>", ...)`.
+2. **Infrastructure**: configure EF in `Persistence/Configurations`, add the `DbSet` to `ApplicationDbContext` and `IApplicationDbContext`, then create a migration:
    ```bash
    cd backend
-   dotnet ef migrations add <TenMigration> -p src/EnglishCenter.Infrastructure -s src/EnglishCenter.Api -o Persistence/Migrations
+   dotnet ef migrations add <MigrationName> -p src/EnglishCenter.Infrastructure -s src/EnglishCenter.Api -o Persistence/Migrations
    ```
-3. **Application**: tạo `Features/<TinhNang>/` gồm Dto, Validator, Service; đăng ký service trong `DependencyInjection.cs`.
-4. **Api**: controller mỏng, chỉ gọi service, gắn `[Authorize(Policy = ...)]`.
-5. **Frontend**: khai báo kiểu trong `types/api.ts`, endpoint trong `api/index.ts`, trang trong `pages/`, chữ trong cả hai file ngôn ngữ, bản dịch cho các mã lỗi mới trong `errors.*`.
-6. **Test**: unit test cho quy tắc nghiệp vụ, integration test cho luồng API chính.
+3. **Application**: create `Features/<Feature>/` with DTOs, validators and a service; register the service in `DependencyInjection.cs`.
+4. **Api**: keep controllers thin — call the service and add `[Authorize(Policy = ...)]`.
+5. **Frontend**: declare types in `types/api.ts`, endpoints in `api/index.ts`, pages in `pages/`, strings in both locale files, and translations for any new error codes under `errors.*`. Add the endpoint to the Storybook mock API and a story for the new page.
+6. **Tests**: unit tests for business rules, integration tests for the main API flows.
 
-## Lệnh thường dùng
+## Common commands
 
-| Việc | Lệnh |
+| Task | Command |
 |---|---|
-| Test backend | `cd backend && dotnet test` |
-| Test frontend | `cd frontend && pnpm test` |
-| Kiểm tra kiểu / lint frontend | `pnpm typecheck` / `pnpm lint` |
-| Build frontend (file tĩnh) | `pnpm build` → `.output/public` |
+| Backend tests | `cd backend && dotnet test` |
+| Frontend tests | `cd frontend && pnpm test` |
+| Frontend type check / lint | `pnpm typecheck` / `pnpm lint` |
+| Frontend build (static files) | `pnpm build` → `.output/public` |
 | Storybook | `pnpm storybook` (dev) / `pnpm build-storybook` |
-| Sinh lại CSS token | `pnpm tokens` |
+| Regenerate token CSS | `pnpm tokens` |
 
-## Cấu hình khi triển khai
+## Deployment configuration
 
-Biến môi trường của API (dấu `__` thay cho cấp lồng trong `appsettings.json`):
+API environment variables (`__` stands for nesting in `appsettings.json`):
 
-| Biến | Ý nghĩa |
+| Variable | Purpose |
 |---|---|
-| `ConnectionStrings__Default` | Chuỗi kết nối SQL Server |
-| `Jwt__SigningKey` | Khóa ký JWT, **bắt buộc đổi**, tối thiểu 32 ký tự |
+| `ConnectionStrings__Default` | SQL Server connection string |
+| `Jwt__SigningKey` | JWT signing key — **must be changed**, at least 32 characters |
 | `Database__InitMode` | `None` / `Migrate` / `EnsureCreated` |
-| `Database__Seed` | `true` để nạp dữ liệu mẫu khi database trống |
-| `Cors__AllowedOrigins__0` | Domain frontend khi frontend và API khác domain |
-| `FileStorage__RootPath` | Thư mục lưu ảnh tải lên |
+| `Database__Seed` | `true` to seed sample data into an empty database |
+| `Cors__AllowedOrigins__0` | Frontend origin when the frontend and API are on different domains |
+| `FileStorage__RootPath` | Folder for uploaded images |
 
-Frontend gọi API qua `/api` cùng domain (nginx proxy). Nếu API ở domain khác, đặt `NUXT_PUBLIC_API_BASE` lúc build.
+The frontend calls the API through `/api` on the same domain (nginx proxy). If the API lives on another domain, set `NUXT_PUBLIC_API_BASE` at build time.
